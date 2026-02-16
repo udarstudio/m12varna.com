@@ -1,0 +1,28 @@
+.site-header {
+  &__logo {
+    width: 64px;
+    height: auto
+  }
+
+  &__bar {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      bottom: 0;
+      width: 100vw;
+      background-color: inherit
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 100%;
+      bottom: 0;
+      width: 100vw;
+      background-color: inherit
+    }
+  }
+}
