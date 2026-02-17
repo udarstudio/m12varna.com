@@ -1,9 +1,9 @@
 <template>
   <main class="mx-auto flex max-w-5xl flex-col gap-10 px-6 pb-16 pt-8">
     <div class="flex flex-col gap-4">
-      <p class="text-xs uppercase tracking-[0.3em] text-gray-500">m12varna</p>
+      <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Мани 12 ЕООД</p>
       <h1 class="text-4xl font-semibold leading-tight sm:text-6xl">
-        Съвременен Nuxt 3 + Tailwind старт за вашия сайт.
+        Климатизация и ремонти - Варна
       </h1>
       <p class="max-w-2xl text-lg text-gray-600">
         Статична Nuxt конфигурация с Tailwind. Започнете изграждането в
