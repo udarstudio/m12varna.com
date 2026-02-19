@@ -1,59 +1,85 @@
+<script setup>
+import { PhoneIcon } from '@heroicons/vue/24/solid';
+
+const appConfig = useAppConfig();
+const seoTitle = `Климатизация и ремонти във Варна | ${appConfig.siteName}`;
+const seoDescription =
+  'Монтаж и профилактика на климатици, ремонти на бани и кухни, дограма и вътрешни довършителни работи във Варна. Над 10 години опит. Обадете се за оглед и оферта.';
+
+useHead({
+  title: seoTitle,
+  meta: [
+    {
+      name: 'description',
+      content: seoDescription,
+    },
+    {
+      property: 'og:title',
+      content: seoTitle,
+    },
+    {
+      property: 'og:description',
+      content: seoDescription,
+    },
+    {
+      name: 'twitter:title',
+      content: seoTitle,
+    },
+    {
+      name: 'twitter:description',
+      content: seoDescription,
+    },
+  ],
+});
+</script>
+
 <template>
-  <main class="mx-auto flex max-w-5xl flex-col gap-10 px-6 pb-16 pt-8">
+  <main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 pb-16 pt-8">
     <div class="flex flex-col gap-4">
-      <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Мани 12 ЕООД</p>
-      <h1 class="text-4xl font-semibold leading-tight sm:text-6xl">
-        Климатизация и ремонти - Варна
+      <h1 class="text-3xl font-semibold leading-tight sm:text-6xl">
+        Климатизация и ремонти във Варна
       </h1>
       <p class="max-w-2xl text-lg text-gray-600">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        {{ appConfig.siteName }} е утвърдена компания във Варна с над 10 години опит в монтажа и
+        обслужването на климатични системи, както и в цялостни и частични ремонти на жилища и
+        търговски обекти.
       </p>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2">
-      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-gray-800">Качества</p>
-        <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-600">
-          <li>Бърза реакция и коректни срокове</li>
-          <li>Гарантирано качество на изпълнение</li>
-          <li>Прозрачни цени и ясни условия</li>
-          <li>Работа с доказани материали</li>
-          <li>Дългосрочна поддръжка</li>
-        </ul>
-      </div>
-      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <p class="text-sm font-semibold text-gray-800">Lorem ipsum</p>
-        <p class="mt-3 text-sm text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
-          libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
-          imperdiet. Duis sagittis ipsum.
-        </p>
-        <p class="mt-3 text-sm text-gray-600">
-          Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In
-          scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem.
-        </p>
-        <p class="mt-3 text-sm text-gray-600">
-          Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit
-          quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet.
-        </p>
-      </div>
+    <div class="space-y-4 text-base text-gray-700">
+      <h2 class="text-xl font-semibold text-gray-800">За нас</h2>
+      <p>
+        През годините сме реализирали десетки успешно завършени проекти, като залагаме на качество,
+        коректност и прецизност във всяка стъпка от работния процес.
+      </p>
+      <p class="font-semibold text-gray-800">Специализирани сме в:</p>
+      <ul class="list-disc space-y-2 pl-5">
+        <li>Монтаж, демонтаж и профилактика на климатици</li>
+        <li>Консултация и избор на подходяща климатична система</li>
+        <li>Ремонт на бани и кухни</li>
+        <li>Цялостни ремонти на апартаменти</li>
+        <li>Монтаж на PVC и алуминиева дограма</li>
+        <li>Довършителни и вътрешни ремонтни дейности</li>
+      </ul>
+      <p>
+        Работим организирано и отговорно, като спазваме договорените срокове и изисквания на
+        клиента. Нашата мисия е да осигурим комфорт, енергийна ефективност и дълготрайни решения за
+        всеки дом и офис във Варна.
+      </p>
+      <p>
+        За нас доверието се гради с резултати – затова подхождаме към всеки проект с внимание към
+        детайла и професионално отношение.
+      </p>
     </div>
 
-    <div class="max-w-3xl space-y-4 text-sm text-gray-600">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dui mi, tincidunt quis,
-        accumsan porttitor, facilisis luctus, metus. Phasellus ultrices nulla quis nibh.
-      </p>
-      <p>
-        Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla
-        quam, gravida non, commodo a, sodales sit amet, nisi. Pellentesque fermentum dolor.
-      </p>
-      <p>
-        Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc. Sed
-        adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit.
-      </p>
+    <div class="flex justify-center">
+      <a
+        class="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+        :href="`tel:${appConfig.phoneNumberRaw}`"
+      >
+        <PhoneIcon class="h-4 w-4" />
+        Обадете ни се: {{ appConfig.phoneNumber }}
+      </a>
     </div>
   </main>
 </template>

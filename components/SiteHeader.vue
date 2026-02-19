@@ -14,11 +14,11 @@
       >
         <a
           class="flex items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80"
-          href="tel:+359877424100"
+              :href="`tel:${appConfig.phoneNumberRaw}`"
         >
-          <PhoneIcon class="h-3 w-3" />
-          0877 424 100
-        </a>
+              <PhoneIcon class="h-3 w-3" />
+              {{ appConfig.phoneNumber }}
+            </a>
         <a
           class="flex items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80"
           href="mailto:mani12ltd@gmail.com"
@@ -84,6 +84,7 @@ import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24
 import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 
 const isMenuOpen = ref(false);
+const appConfig = useAppConfig();
 const navItems = [
   { label: 'За нас', href: '#' },
   { label: 'Дейности', href: '#' },
