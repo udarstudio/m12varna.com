@@ -10,17 +10,17 @@
       </a>
 
       <div
-        class="relative site-header__bar gap-5 bg-black px-6 flex items-center justify-between md:justify-end text-xs text-white"
+        class="relative site-header__bar gap-5 bg-black px-6 flex items-center justify-end text-xs text-white"
       >
         <a
           class="flex items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80"
-              :href="`tel:${appConfig.phoneNumberRaw}`"
+          :href="`tel:${appConfig.phoneNumberRaw}`"
         >
-              <PhoneIcon class="h-3 w-3" />
-              {{ appConfig.phoneNumber }}
-            </a>
+          <PhoneIcon class="h-3 w-3" />
+          {{ appConfig.phoneNumber }}
+        </a>
         <a
-          class="flex items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80"
+          class="items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80 hidden md:flex"
           href="mailto:mani12ltd@gmail.com"
         >
           <EnvelopeIcon class="h-3 w-3" />
@@ -28,7 +28,7 @@
         </a>
       </div>
 
-      <nav class="w-full border-b border-gray-200">
+      <!-- <nav class="w-full border-b border-gray-200">
         <div
           class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-sm text-gray-700"
         >
@@ -58,6 +58,7 @@
             </li>
           </ul>
         </div>
+        
         <div
           v-if="isMenuOpen"
           class="absolute top-full left-0 right-0 border-t border-gray-200 bg-white md:hidden"
@@ -74,7 +75,7 @@
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> -->
     </div>
   </header>
 </template>

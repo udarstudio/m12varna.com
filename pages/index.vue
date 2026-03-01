@@ -34,16 +34,17 @@ useHead({
 </script>
 
 <template>
-  <main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 pb-16 pt-8">
+  <main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16">
     <div class="flex flex-col gap-4">
-      <h1 class="text-3xl font-semibold leading-tight sm:text-6xl">
+      <h1 class="text-3xl md:text-5xl font-semibold leading-tight">
         Климатизация и ремонти във Варна
       </h1>
-      <p class="max-w-2xl text-lg text-gray-600">
-        {{ appConfig.siteName }} е утвърдена компания във Варна с над 10 години опит в монтажа и
-        обслужването на климатични системи, както и в цялостни и частични ремонти на жилища и
-        търговски обекти.
-      </p>
+
+      <h2 class="max-w-2xl text-gray-600">
+        <strong>{{ appConfig.siteName }}</strong> е утвърдена компания във Варна с над 10 години
+        опит в монтажа и обслужването на климатични системи, както и в цялостни и частични ремонти
+        на жилища и търговски обекти.
+      </h2>
     </div>
 
     <div class="space-y-4 text-base text-gray-700">
