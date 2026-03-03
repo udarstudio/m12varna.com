@@ -1,5 +1,5 @@
 <template>
-  <header class="site-header bg-gray-200/80">
+  <header class="site-header">
     <div class="relative mx-auto max-w-5xl">
       <a
         href="/"
@@ -28,9 +28,9 @@
         </a>
       </div>
 
-      <!-- <nav class="w-full border-b border-gray-200">
+      <nav>
         <div
-          class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-sm text-gray-700"
+          class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-md text-gray-700"
         >
           <span> </span>
 
@@ -49,7 +49,7 @@
             <li v-for="(item, index) in navItems" :key="item.label" class="flex items-center">
               <span
                 v-if="index !== 0"
-                class="mx-4 inline-block h-7 w-px bg-gray-300/60"
+                class="mx-4 inline-block h-7 w-px bg-gray-300"
                 aria-hidden="true"
               ></span>
               <a class="px-2 py-2 text-gray-700 transition hover:text-gray-900" :href="item.href">
@@ -58,7 +58,7 @@
             </li>
           </ul>
         </div>
-        
+
         <div
           v-if="isMenuOpen"
           class="absolute top-full left-0 right-0 border-t border-gray-200 bg-white md:hidden"
@@ -75,7 +75,7 @@
             </li>
           </ul>
         </div>
-      </nav> -->
+      </nav>
     </div>
   </header>
 </template>
@@ -87,10 +87,8 @@ import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 const isMenuOpen = ref(false);
 const appConfig = useAppConfig();
 const navItems = [
-  { label: 'За нас', href: '#' },
-  { label: 'Дейности', href: '#' },
-  { label: 'Галерия', href: '#' },
-  { label: 'Партньори', href: '#' },
+  { label: 'За нас', href: '/' },
+  { label: 'Контакти', href: '#' },
 ];
 </script>
 
