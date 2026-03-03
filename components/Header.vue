@@ -1,13 +1,13 @@
 <template>
   <header class="site-header">
     <div class="relative mx-auto max-w-5xl">
-      <a
-        href="/"
+      <NuxtLink
+        to="/"
         aria-label="Начало"
         class="site-header__logo relative z-10 flex items-center p-2 bg-black"
       >
         <img width="64" height="61" :src="logoUrl" alt="M12 Varna" />
-      </a>
+      </NuxtLink>
 
       <div
         class="relative site-header__bar gap-5 bg-black px-6 flex items-center justify-end text-xs text-white"
@@ -21,10 +21,10 @@
         </a>
         <a
           class="items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80 hidden md:flex"
-          href="mailto:mani12ltd@gmail.com"
+          :href="`mailto:${appConfig.email}`"
         >
           <EnvelopeIcon class="h-3 w-3" />
-          mani12ltd@gmail.com
+          {{ appConfig.email }}
         </a>
       </div>
 
@@ -52,9 +52,9 @@
                 class="mx-4 inline-block h-7 w-px bg-gray-300"
                 aria-hidden="true"
               ></span>
-              <a class="px-2 py-2 text-gray-700 transition hover:text-gray-900" :href="item.href">
+              <NuxtLink class="px-2 py-2 text-gray-700 transition hover:text-gray-900" :to="item.href">
                 {{ item.label }}
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -65,13 +65,13 @@
         >
           <ul class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-4 text-sm text-gray-700">
             <li v-for="item in navItems" :key="item.label">
-              <a
+              <NuxtLink
                 class="block rounded-md px-3 py-2 transition hover:bg-gray-100"
-                :href="item.href"
+                :to="item.href"
                 @click="isMenuOpen = false"
               >
                 {{ item.label }}
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -88,7 +88,7 @@ const isMenuOpen = ref(false);
 const appConfig = useAppConfig();
 const navItems = [
   { label: 'За нас', href: '/' },
-  { label: 'Контакти', href: '#' },
+  { label: 'Контакти', href: '/kontakti' },
 ];
 </script>
 
