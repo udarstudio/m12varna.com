@@ -38,7 +38,9 @@ useHead({
         :href="`tel:${appConfig.phoneNumberRaw}`"
       >
         <div class="flex items-start gap-4">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white">
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white"
+          >
             <PhoneIcon class="h-5 w-5" />
           </span>
           <div class="flex flex-col gap-2">
@@ -56,7 +58,9 @@ useHead({
         :href="`mailto:${appConfig.email}`"
       >
         <div class="flex items-start gap-4">
-          <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white">
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white"
+          >
             <EnvelopeIcon class="h-5 w-5" />
           </span>
           <div class="flex flex-col gap-2">
@@ -66,7 +70,10 @@ useHead({
             <span class="text-2xl font-semibold break-all text-slate-900">{{
               appConfig.email
             }}</span>
-            <span>Изпратете описание на обекта и ще се свържем с вас възможно най-скоро.</span>
+            <span
+              >Изпратете описание на обекта или запитване и ще се свържем с вас възможно
+              най-скоро.</span
+            >
           </div>
         </div>
       </a>
