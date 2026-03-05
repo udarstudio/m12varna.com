@@ -1,6 +1,12 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
   css: ['~/assets/css/tailwind.css'],
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://remonti-varna.bg',
+  },
+  sitemap: {
+    autoLastmod: true,
+  },
   nitro: {
     preset: 'static',
   },
