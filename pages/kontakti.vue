@@ -2,6 +2,7 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
+const siteConfig = useSiteConfig();
 const seoTitle = `Контакти | ${appConfig.siteName}`;
 const seoDescription =
   'Свържете се с Мани 12 ЕООД за климатизация, вентилация и ремонтни дейности във Варна. Обадете се или изпратете запитване по имейл.';
@@ -12,8 +13,10 @@ const mapsDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${map
 
 useHead({
   title: seoTitle,
+  link: [{ rel: 'canonical', href: `${siteConfig.url}/kontakti` }],
   meta: [
     { name: 'description', content: seoDescription },
+    { property: 'og:url', content: `${siteConfig.url}/kontakti` },
     { property: 'og:title', content: seoTitle },
     { property: 'og:description', content: seoDescription },
     { name: 'twitter:title', content: seoTitle },
