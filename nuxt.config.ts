@@ -6,9 +6,13 @@ export default defineNuxtConfig({
   },
   sitemap: {
     autoLastmod: true,
+    exclude: ['/404'],
   },
   nitro: {
     preset: 'static',
+    prerender: {
+      routes: ['/404'],
+    },
   },
   app: {
     head: {

@@ -2,16 +2,23 @@
 import { PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
+const siteConfig = useSiteConfig();
+const siteUrl = siteConfig.url || 'https://remonti-varna.bg';
 const seoTitle = `Климатизация и ремонти във Варна | ${appConfig.siteName}`;
 const seoDescription =
-  'Монтаж и профилактика на климатици, ремонти на бани и кухни, дограма и вътрешни довършителни работи във Варна. Над 10 години опит. Обадете се за оглед и оферта.';
+  'Монтаж и профилактика на климатици, ремонти на бани и кухни, дограма и вътрешни довършителни работи във Варна. Над 14 години опит. Обадете се за оглед и оферта.';
 
 useHead({
   title: seoTitle,
+  link: [{ rel: 'canonical', href: siteUrl }],
   meta: [
     {
       name: 'description',
       content: seoDescription,
+    },
+    {
+      property: 'og:url',
+      content: siteUrl,
     },
     {
       property: 'og:title',
