@@ -3,10 +3,44 @@ import { PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
+const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
 const siteUrl = siteConfig.url || 'https://remonti-varna.bg';
 const seoTitle = `Климатизация и ремонти във Варна | ${appConfig.siteName}`;
 const seoDescription =
   'Монтаж и профилактика на климатици, ремонти на бани и кухни, дограма и вътрешни довършителни работи във Варна. Над 14 години опит. Обадете се за оглед и оферта.';
+const homePage = {
+  '@type': 'WebPage',
+  '@id': ids.homepage,
+  url: siteUrl,
+  name: seoTitle,
+  description: seoDescription,
+  isPartOf: {
+    '@id': ids.website,
+  },
+  about: {
+    '@id': ids.organization,
+  },
+  inLanguage: 'bg',
+};
+const service = {
+  '@type': 'Service',
+  '@id': ids.homepageService,
+  name: 'Климатизация и ремонтни услуги във Варна',
+  description: seoDescription,
+  provider: {
+    '@id': ids.organization,
+  },
+  areaServed: {
+    '@type': 'City',
+    name: appConfig.serviceArea.city,
+  },
+  serviceType: appConfig.services,
+  url: siteUrl,
+  mainEntityOfPage: {
+    '@id': ids.homepage,
+  },
+};
+const homeSchema = createSchemaGraph([website, localBusiness, homePage, service]);
 
 useHead({
   title: seoTitle,
@@ -35,6 +69,12 @@ useHead({
     {
       name: 'twitter:description',
       content: seoDescription,
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(homeSchema),
     },
   ],
 });
