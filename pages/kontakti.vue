@@ -1,9 +1,10 @@
 <script setup>
-import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
-
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
 const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
+const isSubmitting = ref(false);
+const submitState = ref('idle');
+const submitMessage = ref('');
 const seoTitle = `Контакти | ${appConfig.siteName}`;
 const seoDescription =
   'Свържете се с Мани 12 ЕООД за климатизация, вентилация и ремонтни дейности във Варна. Обадете се или изпратете запитване по имейл.';
@@ -44,6 +45,40 @@ const contactPage = {
 };
 const contactSchema = createSchemaGraph([website, localBusiness, contactWebPage, contactPage]);
 
+async function submitContactForm(event) {
+  const form = event.target;
+  const formData = new FormData(form);
+
+  isSubmitting.value = true;
+  submitState.value = 'idle';
+  submitMessage.value = '';
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || 'Възникна проблем при изпращането.');
+    }
+
+    form.reset();
+    submitState.value = 'success';
+    submitMessage.value = 'Запитването беше изпратено успешно.';
+  } catch (error) {
+    submitState.value = 'error';
+    submitMessage.value =
+      error instanceof Error ? error.message : 'Възникна проблем при изпращането.';
+  } finally {
+    isSubmitting.value = false;
+  }
+}
+
 useHead({
   title: seoTitle,
   link: [{ rel: 'canonical', href: contactUrl }],
@@ -73,58 +108,105 @@ useHead({
         строително-ремонтни дейности във Варна и региона.
       </p>
     </div>
+    <section class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+      <div class="mb-6 flex flex-col gap-3">
+        <h2 class="text-2xl font-semibold text-slate-900">Изпратете запитване</h2>
+        <p class="max-w-3xl">
+          Опишете накратко каква услуга ви е нужна и ще се свържем с вас възможно най-скоро.
+        </p>
+      </div>
 
-    <div class="grid gap-4 md:grid-cols-2">
-      <a
-        class="flex rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-gray-300"
-        :href="`tel:${appConfig.phoneNumberRaw}`"
-      >
-        <div class="flex items-start gap-4">
-          <span
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white"
-          >
-            <PhoneIcon class="h-5 w-5" />
-          </span>
-          <div class="flex flex-col gap-2">
-            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500"
-              >Телефон</span
-            >
-            <span class="text-2xl font-semibold text-slate-900">{{ appConfig.phoneNumber }}</span>
-            <span>Позвънете за бърза връзка относно нов проект или текущ ремонт.</span>
-          </div>
-        </div>
-      </a>
+      <form @submit.prevent="submitContactForm" class="grid gap-4">
+        <input type="hidden" name="access_key" value="0c102ed8-2e4b-4188-9c44-41913c54234c" />
 
-      <a
-        class="flex rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-gray-300"
-        :href="`mailto:${appConfig.email}`"
-      >
-        <div class="flex items-start gap-4">
-          <span
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-white"
-          >
-            <EnvelopeIcon class="h-5 w-5" />
-          </span>
-          <div class="flex flex-col gap-2">
-            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500"
-              >Имейл</span
+        <div class="grid gap-4 md:grid-cols-2">
+          <label class="flex flex-col gap-2">
+            <span class="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500"
+              >Име *</span
             >
-            <span class="text-2xl font-semibold break-all text-slate-900">{{
-              appConfig.email
-            }}</span>
-            <span
-              >Изпратете описание на обекта или запитване и ще се свържем с вас възможно
-              най-скоро.</span
+            <input
+              type="text"
+              name="name"
+              required
+              class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+            />
+          </label>
+
+          <label class="flex flex-col gap-2">
+            <span class="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500"
+              >Телефон *</span
             >
-          </div>
+            <input
+              type="tel"
+              name="phone"
+              required
+              class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+            />
+          </label>
         </div>
-      </a>
-    </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <label class="flex flex-col gap-2">
+            <span class="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500"
+              >Имейл *</span
+            >
+            <input
+              type="email"
+              name="email"
+              required
+              class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+            />
+          </label>
+
+          <label class="flex flex-col gap-2">
+            <span class="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500"
+              >Услуга</span
+            >
+            <input
+              type="text"
+              name="subject"
+              class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+            />
+          </label>
+        </div>
+
+        <label class="flex flex-col gap-2">
+          <span class="text-sm font-semibold uppercase tracking-[0.12em] text-gray-500"
+            >Съобщение *</span
+          >
+          <textarea
+            name="message"
+            required
+            rows="6"
+            class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+          ></textarea>
+        </label>
+
+        <div class="flex items-center gap-4 max-md:flex-col max-md:items-start">
+          <p
+            v-if="submitMessage"
+            class="text-base font-semibold"
+            :class="submitState === 'success' ? 'text-teal-700' : 'text-red-600'"
+          >
+            {{ submitState === 'success' ? '✓ ' : '' }}{{ submitMessage }}
+          </p>
+
+          <button
+            type="submit"
+            :disabled="isSubmitting"
+            class="ml-auto inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 max-md:ml-0"
+            :class="{ 'cursor-not-allowed opacity-70': isSubmitting }"
+          >
+            {{ isSubmitting ? 'Изпращане...' : 'Изпрати запитване' }}
+          </button>
+        </div>
+      </form>
+    </section>
 
     <section class="grid gap-6 rounded-3xl bg-slate-50 md:grid-cols-[1.3fr_0.9fr]">
-      <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+      <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
         <iframe
-          class="h-[360px] w-full"
+          class="h-[420px] w-full"
           :src="mapsEmbedUrl"
           title="Карта до офиса на Мани 12 ЕООД"
           loading="lazy"
@@ -132,10 +214,30 @@ useHead({
         ></iframe>
       </div>
 
-      <div class="flex flex-col justify-between gap-5 rounded-2xl bg-white p-6">
+      <div
+        class="flex flex-col justify-between gap-5 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+      >
         <div class="flex flex-col gap-3">
           <h2 class="text-2xl font-semibold text-slate-900">Адрес</h2>
           <p v-for="line in addressLines" :key="line">{{ line }}</p>
+          <p>
+            Телефон:
+            <a
+              class="font-semibold text-slate-900 transition hover:text-teal-700"
+              :href="`tel:${appConfig.phoneNumberRaw}`"
+            >
+              {{ appConfig.phoneNumber }}
+            </a>
+          </p>
+          <p>
+            Имейл:
+            <a
+              class="font-semibold text-slate-900 transition hover:text-teal-700"
+              :href="`mailto:${appConfig.email}`"
+            >
+              {{ appConfig.email }}
+            </a>
+          </p>
           <p>
             Посетете ни на място или използвайте картата, за да отворите маршрута директно в Google
             Maps.
