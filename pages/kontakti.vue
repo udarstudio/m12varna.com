@@ -3,24 +3,63 @@ import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
+const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
 const seoTitle = `Контакти | ${appConfig.siteName}`;
 const seoDescription =
   'Свържете се с Мани 12 ЕООД за климатизация, вентилация и ремонтни дейности във Варна. Обадете се или изпратете запитване по имейл.';
-const addressLines = ['Варна, България 9009', 'ул. Тролейна 36, ет. 2'];
+const contactUrl = `${siteConfig.url}/kontakti`;
+const addressLines = [
+  `${appConfig.address.addressLocality}, България ${appConfig.address.postalCode}`,
+  appConfig.address.streetAddress,
+];
 const mapsQuery = encodeURIComponent(addressLines.join(', '));
 const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&z=16&output=embed`;
 const mapsDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+const contactWebPage = {
+  '@type': 'WebPage',
+  '@id': ids.contactPage,
+  url: contactUrl,
+  name: seoTitle,
+  description: seoDescription,
+  isPartOf: {
+    '@id': ids.website,
+  },
+  about: {
+    '@id': ids.organization,
+  },
+  inLanguage: 'bg',
+};
+const contactPage = {
+  '@type': 'ContactPage',
+  '@id': `${contactUrl}#contact-page`,
+  url: contactUrl,
+  name: seoTitle,
+  description: seoDescription,
+  mainEntity: {
+    '@id': ids.organization,
+  },
+  isPartOf: {
+    '@id': ids.website,
+  },
+};
+const contactSchema = createSchemaGraph([website, localBusiness, contactWebPage, contactPage]);
 
 useHead({
   title: seoTitle,
-  link: [{ rel: 'canonical', href: `${siteConfig.url}/kontakti` }],
+  link: [{ rel: 'canonical', href: contactUrl }],
   meta: [
     { name: 'description', content: seoDescription },
-    { property: 'og:url', content: `${siteConfig.url}/kontakti` },
+    { property: 'og:url', content: contactUrl },
     { property: 'og:title', content: seoTitle },
     { property: 'og:description', content: seoDescription },
     { name: 'twitter:title', content: seoTitle },
     { name: 'twitter:description', content: seoDescription },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(contactSchema),
+    },
   ],
 });
 </script>
