@@ -13,9 +13,9 @@ const addressLines = [
   `${appConfig.address.addressLocality}, България ${appConfig.address.postalCode}`,
   appConfig.address.streetAddress,
 ];
-const mapsQuery = encodeURIComponent(addressLines.join(', '));
-const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&z=16&output=embed`;
-const mapsDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+const mapsEmbedUrl =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d222.93830296520397!2d27.89604820686935!3d43.22248691133264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a455da64057e2d%3A0xb819e34b4c6c6363!2z0JzQsNC90LggMTIg0JXQntCe0JQg0JrQu9C40LzQsNGC0LjQt9Cw0YbQuNGPINC4INGA0LXQvNC-0L3RgtC4!5e1!3m2!1sen!2sbg!4v1774038462635!5m2!1sen!2sbg';
+const mapsDirectionsUrl = 'https://maps.app.goo.gl/E7sqdUpHSQTiRC7F7';
 const contactWebPage = {
   '@type': 'WebPage',
   '@id': ids.contactPage,
