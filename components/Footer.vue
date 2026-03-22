@@ -60,8 +60,5 @@ import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 
 const appConfig = useAppConfig();
-const navItems = [
-  { label: 'За нас', href: '/' },
-  { label: 'Контакти', href: '/kontakti' },
-];
+const { navItems } = useNavigation();
 </script>

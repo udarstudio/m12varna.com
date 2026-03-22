@@ -86,10 +86,7 @@ import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 
 const isMenuOpen = ref(false);
 const appConfig = useAppConfig();
-const navItems = [
-  { label: 'За нас', href: '/' },
-  { label: 'Контакти', href: '/kontakti' },
-];
+const { navItems } = useNavigation();
 </script>
 
 <style scoped lang="scss">
