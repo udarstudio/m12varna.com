@@ -9,6 +9,7 @@ export function useStructuredData() {
     homepage: `${siteUrl}/#webpage`,
     homepageService: `${siteUrl}/#service`,
     contactPage: `${siteUrl}/kontakti#webpage`,
+    partnersPage: `${siteUrl}/partnyori#webpage`,
   };
 
   const organizationName = appConfig.legalName || appConfig.siteName;
