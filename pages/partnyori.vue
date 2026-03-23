@@ -1,11 +1,14 @@
 <script setup>
+import { ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/solid';
+
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
 const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
+const siteUrl = siteConfig.url || 'https://remonti-varna.bg';
 const seoTitle = `Партньори и приятели | ${appConfig.siteName}`;
 const seoDescription =
-  'Научете повече за партньорствата на Мани 12 ЕООД във Варна и възможностите за съвместна работа по климатизация, вентилация и ремонтни проекти.';
-const partnersUrl = `${siteConfig.url}/partnyori`;
+  'Разгледайте партньорите на Мани 12 ЕООД във Варна - доверени компании и специалисти, с които работим по проекти за климатизация, вентилация и ремонти.';
+const partnersUrl = `${siteUrl}/partnyori`;
 const partnerPage = {
   '@type': 'WebPage',
   '@id': ids.partnersPage,
@@ -20,7 +23,62 @@ const partnerPage = {
   },
   inLanguage: 'bg',
 };
-const partnersSchema = createSchemaGraph([website, localBusiness, partnerPage]);
+
+const partners = [
+  {
+    name: 'Счетоводна кантора "МИ-24"',
+    description:
+      'Счетоводна кантора "МИ-24" предлага счетоводни услуги, данъчни и кредитни консултации, както и професионално обслужване на фирми и физически лица.',
+    website: 'https://www.facebook.com/mi24eood/',
+    logo: '/partnyori/schetovodna-kantora-mi-24.png',
+  },
+  {
+    name: 'СК "Чудните скали"',
+    description:
+      'СК "Чудните скали" обединява хора с различни умения, възможности и интереси, за които приоритет са заниманията сред природата.',
+    website: 'https://chudniteskali.com',
+    logo: '/partnyori/sk-chudnite-skali.png',
+  },
+  {
+    name: '"Автоматика Делис" ЕООД',
+    description:
+      '"Автоматика Делис" ЕООД е специализирана компания в Стара Загора за гаражни и индустриални врати, известна с представителството си на Hörmann.',
+    website: 'https://delice.bg/за-нас/',
+    logo: '/partnyori/delice.png',
+  },
+  {
+    name: '"Екеле" ЕООД',
+    description:
+      'Екеле ЕООД е наш партньор с опит в решения, свързани с врати и входни системи, с когото работим с доверие и добро професионално отношение.',
+    logo: '/partnyori/ekele.png',
+  },
+];
+
+const partnersItemList = {
+  '@type': 'ItemList',
+  '@id': `${partnersUrl}#partners-list`,
+  name: 'Партньори и приятели на Мани 12 ЕООД',
+  itemListElement: partners.map((partner, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Organization',
+      name: partner.name,
+      description: partner.description,
+      ...(partner.website ? { url: partner.website } : {}),
+      ...(partner.logo
+        ? {
+            logo: {
+              '@type': 'ImageObject',
+              url: `${siteUrl}${partner.logo}`,
+            },
+          }
+        : {}),
+    },
+  })),
+};
+
+const partnersSchema = createSchemaGraph([website, localBusiness, partnerPage, partnersItemList]);
 
 useHead({
   title: seoTitle,
@@ -40,20 +98,6 @@ useHead({
     },
   ],
 });
-
-const partnerTypes = [
-  'Строителни фирми и инвеститори',
-  'Архитекти, проектанти и интериорни студиа',
-  'Доставчици на климатична, вентилационна и строителна техника',
-  'Екипи за довършителни, електро и ВиК дейности',
-];
-
-const partnerBenefits = [
-  'Ясна комуникация, коректни срокове и отговорност във всеки етап на проекта',
-  'Практически опит в климатизация, вентилация и строително-ремонтни дейности',
-  'Гъвкавост при работа както по малки обекти, така и по цялостни проекти',
-  'Фокус върху качественото изпълнение и дългосрочните професионални отношения',
-];
 </script>
 
 <template>
@@ -63,65 +107,51 @@ const partnerBenefits = [
         Партньори и приятели
       </h1>
       <p class="max-w-3xl text-lg">
-        Работим с фирми, специалисти и доставчици, с които споделяме еднакви стандарти за
-        качество, коректност и професионално отношение към всеки обект.
+        През годините сме имали щастието да работим с хора и фирми, на които можем да разчитаме. Тук
+        споделяме част от партньорите и приятелите, с които сме работили заедно и с които
+        продължаваме да поддържаме добри отношения.
       </p>
     </section>
 
-    <section class="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-      <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <h2 class="text-2xl font-semibold text-slate-900">Заедно изпълняваме повече</h2>
-        <div class="mt-4 space-y-4">
-          <p>
-            <strong>{{ appConfig.legalName }}</strong> участва в проекти, при които добрата
-            координация между отделните екипи е ключова. Затова ценим устойчивите партньорства с
-            компании и професионалисти, на които може да се разчита.
-          </p>
-          <p>
-            От частни жилища и търговски обекти до по-широки строително-ремонтни задачи, подхождаме
-            с ясна организация, качествено изпълнение и уважение към общата цел на проекта.
-          </p>
+    <section v-if="partners.length" class="grid gap-5 md:grid-cols-2">
+      <article
+        v-for="partner in partners"
+        :key="partner.name"
+        class="flex h-full flex-col gap-5 rounded-3xl border border-gray-200 bg-white p-5 shadow-sm"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-white"
+          >
+            <img
+              v-if="partner.logo"
+              :src="partner.logo"
+              :alt="`Лого на ${partner.name}`"
+              width="110"
+              height="110"
+              class="h-full w-full object-contain p-1.5"
+            />
+            <span v-else class="text-lg font-semibold text-slate-400">
+              {{ partner.name.slice(0, 2).toUpperCase() }}
+            </span>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-slate-900">{{ partner.name }}</h3>
+            <a
+              v-if="partner.website"
+              :href="partner.website"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              class="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+            >
+              Към сайта
+              <ArrowTopRightOnSquareIcon class="h-3 w-3" />
+            </a>
+          </div>
         </div>
+
+        <p class="text-sm leading-6">{{ partner.description }}</p>
       </article>
-
-      <article class="rounded-2xl border border-gray-200 bg-slate-50 p-6 shadow-sm">
-        <h2 class="text-2xl font-semibold text-slate-900">Търсим сътрудничество с</h2>
-        <ul class="mt-4 list-disc space-y-2 pl-5">
-          <li v-for="item in partnerTypes" :key="item">{{ item }}</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h2 class="text-2xl font-semibold text-slate-900">Какво предлагаме като партньор</h2>
-      <div class="mt-5 grid gap-4 md:grid-cols-2">
-        <div
-          v-for="benefit in partnerBenefits"
-          :key="benefit"
-          class="rounded-2xl border border-gray-200 bg-slate-50 p-5"
-        >
-          <p>{{ benefit }}</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="rounded-3xl bg-black px-6 py-8 text-white">
-      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div class="max-w-3xl space-y-3">
-          <h2 class="text-2xl font-semibold">Имате идея за съвместна работа?</h2>
-          <p class="text-sm text-gray-300 md:text-base">
-            Ако търсите надежден изпълнител или партньор за проект във Варна и региона, свържете се
-            с нас, за да обсъдим възможностите.
-          </p>
-        </div>
-
-        <NuxtLink
-          to="/kontakti"
-          class="inline-flex w-fit rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-teal-100"
-        >
-          Свържете се с нас
-        </NuxtLink>
-      </div>
     </section>
   </main>
 </template>
