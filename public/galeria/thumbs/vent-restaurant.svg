@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Вентилация за търговски обект</title>
+  <desc id="desc">Илюстративна визия за вентилационна система в търговски обект.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dcfce7" />
+      <stop offset="100%" stop-color="#bbf7d0" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)" />
+  <rect x="52" y="72" width="696" height="456" rx="32" fill="#f0fdf4" />
+  <path d="M120 180h510c42 0 76 34 76 76v0c0 42-34 76-76 76H310v120H198V332h-78V180z" fill="#14532d" />
+  <circle cx="630" cy="256" r="40" fill="#4ade80" />
+  <circle cx="246" cy="256" r="20" fill="#dcfce7" />
+  <circle cx="308" cy="256" r="20" fill="#dcfce7" />
+  <circle cx="370" cy="256" r="20" fill="#dcfce7" />
+  <text x="112" y="466" fill="#14532d" font-size="42" font-family="Arial, sans-serif" font-weight="700">
+    Вентилация
+  </text>
+  <text x="112" y="508" fill="#166534" font-size="24" font-family="Arial, sans-serif">
+    Търговски обект
+  </text>
+</svg>

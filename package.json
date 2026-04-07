@@ -13,7 +13,8 @@
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
     "@nuxtjs/sitemap": "^7.6.0",
-    "nuxt": "^3.10.0"
+    "nuxt": "^3.10.0",
+    "photoswipe": "^5.4.4"
   },
   "devDependencies": {
     "@heroicons/vue": "^2.2.0",

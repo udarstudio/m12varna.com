@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Монтаж в апартамент</title>
+  <desc id="desc">Илюстративна визия за климатизация в апартамент.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dbeafe" />
+      <stop offset="100%" stop-color="#bfdbfe" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#bg)" />
+  <rect x="96" y="164" width="1408" height="872" rx="64" fill="#f8fafc" />
+  <rect x="224" y="304" width="440" height="396" rx="48" fill="#cbd5e1" />
+  <rect x="740" y="260" width="516" height="108" rx="54" fill="#0f172a" />
+  <rect x="820" y="500" width="560" height="48" rx="24" fill="#94a3b8" />
+  <rect x="820" y="584" width="424" height="36" rx="18" fill="#cbd5e1" />
+  <rect x="820" y="660" width="496" height="36" rx="18" fill="#cbd5e1" />
+  <circle cx="1200" cy="314" r="22" fill="#5eead4" />
+  <text x="224" y="912" fill="#0f172a" font-size="84" font-family="Arial, sans-serif" font-weight="700">
+    Климатизация
+  </text>
+  <text x="224" y="1000" fill="#475569" font-size="48" font-family="Arial, sans-serif">
+    Монтаж в апартамент
+  </text>
+</svg>
