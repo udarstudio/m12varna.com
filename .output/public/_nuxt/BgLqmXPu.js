@@ -1,0 +1,1 @@
+import{x as a,y as i,z as o,A as r}from"./BRNCwcRL.js";function n(s){const t=i({});return a(()=>{const e=o().$nuxtSiteConfig.get(r({resolveRefs:!0},s));t&&e&&Object.assign(t,e)}),delete t._priority,t}export{n as u};

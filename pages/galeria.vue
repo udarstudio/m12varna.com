@@ -177,6 +177,16 @@ onMounted(() => {
     bgOpacity: 0.92,
   });
 
+  lightbox.on('uiRegister', () => {
+    lightbox?.pswp?.ui?.registerElement({
+      name: 'gallery-note',
+      order: 9,
+      isButton: false,
+      appendTo: 'root',
+      html: '<span class="pswp-gallery-note">Това го можем</span>',
+    });
+  });
+
   lightbox.init();
 });
 
@@ -261,7 +271,7 @@ onBeforeUnmount(() => {
           :aria-label="`Отвори ${image.caption || image.alt} на цял екран`"
           class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-4"
         >
-          <figure class="relative overflow-hidden bg-slate-100">
+          <figure class="overflow-hidden bg-slate-100">
             <img
               :src="image.thumbSrc"
               :alt="image.alt"
@@ -270,35 +280,27 @@ onBeforeUnmount(() => {
               class="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
               loading="lazy"
             />
-            <div
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent"
-            ></div>
-            <span class="gallery-note absolute bottom-4 left-4 text-3xl text-white">
-              Това го можем
-            </span>
           </figure>
         </a>
-
-        <div class="flex items-center justify-between gap-3 p-5">
-          <div>
-            <h3 class="text-lg font-semibold text-slate-900">
-              {{ image.caption || currentCategory?.label }}
-            </h3>
-            <p class="mt-1 text-sm leading-6 text-gray-500">{{ image.alt }}</p>
-          </div>
-        </div>
       </article>
     </section>
   </main>
 </template>
 
 <style scoped>
-.gallery-note {
+:global(.pswp-gallery-note) {
+  position: absolute;
+  bottom: clamp(1.5rem, 4vw, 3rem);
+  left: clamp(1.5rem, 5vw, 4rem);
+  z-index: 1;
   font-family: 'Brush Script MT', 'Segoe Print', 'Lucida Handwriting', cursive;
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
   line-height: 1;
+  color: #fff;
   text-shadow:
-    0 3px 18px rgba(15, 23, 42, 0.38),
-    0 1px 2px rgba(15, 23, 42, 0.45);
+    0 6px 28px rgba(15, 23, 42, 0.55),
+    0 2px 6px rgba(15, 23, 42, 0.7);
   transform: rotate(-6deg);
+  pointer-events: none;
 }
 </style>
