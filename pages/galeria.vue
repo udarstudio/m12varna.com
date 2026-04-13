@@ -43,71 +43,117 @@ const galleryPage = {
 
 const categories: GalleryCategory[] = [
   { id: 'all', label: 'Всички' },
-  { id: 'klimatizatsia', label: 'Климатизация' },
   { id: 'remonti', label: 'Ремонти' },
-  { id: 'ventilatsia', label: 'Вентилация' },
 ];
 
 const galleryImages: GalleryImage[] = [
   {
-    id: 'ac-apartment',
-    categoryId: 'klimatizatsia',
-    alt: 'Илюстративна визия за монтаж на климатик в жилищен интериор.',
-    caption: 'Монтаж в апартамент',
-    thumbSrc: '/galeria/thumbs/klima-apartment.svg',
-    fullSrc: '/galeria/full/klima-apartment.svg',
-    width: 1600,
-    height: 1200,
-  },
-  {
-    id: 'ac-office',
-    categoryId: 'klimatizatsia',
-    alt: 'Илюстративна визия за климатизация в работно пространство.',
-    caption: 'Климатизация за офис',
-    thumbSrc: '/galeria/thumbs/klima-office.svg',
-    fullSrc: '/galeria/full/klima-office.svg',
-    width: 1600,
-    height: 1200,
-  },
-  {
-    id: 'renovation-bathroom',
+    id: 'remonti-1-5',
     categoryId: 'remonti',
-    alt: 'Илюстративна визия за обновяване на баня с прецизни довършителни работи.',
-    caption: 'Обновяване на баня',
-    thumbSrc: '/galeria/thumbs/remont-bathroom.svg',
-    fullSrc: '/galeria/full/remont-bathroom.svg',
-    width: 1600,
-    height: 1200,
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-5.jpg',
+    fullSrc: '/galeria/full/remonti/1-5.jpg',
+    width: 4000,
+    height: 1840,
   },
   {
-    id: 'renovation-kitchen',
+    id: 'remonti-1-7',
     categoryId: 'remonti',
-    alt: 'Илюстративна визия за довършителни работи и монтаж в кухня.',
-    caption: 'Довършителни работи в кухня',
-    thumbSrc: '/galeria/thumbs/remont-kitchen.svg',
-    fullSrc: '/galeria/full/remont-kitchen.svg',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-7.jpg',
+    fullSrc: '/galeria/full/remonti/1-7.jpg',
+    width: 4000,
+    height: 1840,
+  },
+  {
+    id: 'remonti-1-10-2',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-10%20(2).jpg',
+    fullSrc: '/galeria/full/remonti/1-10%20(2).jpg',
     width: 1600,
     height: 1200,
   },
   {
-    id: 'ventilation-restaurant',
-    categoryId: 'ventilatsia',
-    alt: 'Илюстративна визия за вентилационна система в търговски обект.',
-    caption: 'Вентилация за търговски обект',
-    thumbSrc: '/galeria/thumbs/vent-restaurant.svg',
-    fullSrc: '/galeria/full/vent-restaurant.svg',
-    width: 1600,
-    height: 1200,
+    id: 'remonti-1-12',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-12.jpg',
+    fullSrc: '/galeria/full/remonti/1-12.jpg',
+    width: 4000,
+    height: 1840,
   },
   {
-    id: 'ventilation-home',
-    categoryId: 'ventilatsia',
-    alt: 'Илюстративна визия за домашна вентилация и въздуховоди.',
-    caption: 'Домашна вентилация',
-    thumbSrc: '/galeria/thumbs/vent-home.svg',
-    fullSrc: '/galeria/full/vent-home.svg',
-    width: 1600,
-    height: 1200,
+    id: 'remonti-1-15',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-15.jpg',
+    fullSrc: '/galeria/full/remonti/1-15.jpg',
+    width: 4000,
+    height: 1840,
+  },
+  {
+    id: 'remonti-1-19',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-19.jpg',
+    fullSrc: '/galeria/full/remonti/1-19.jpg',
+    width: 4000,
+    height: 1840,
+  },
+  {
+    id: 'remonti-1-22',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-22.jpg',
+    fullSrc: '/galeria/full/remonti/1-22.jpg',
+    width: 4000,
+    height: 1840,
+  },
+  {
+    id: 'remonti-1-28',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-28.jpg',
+    fullSrc: '/galeria/full/remonti/1-28.jpg',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    id: 'remonti-1-32',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-32.jpg',
+    fullSrc: '/galeria/full/remonti/1-32.jpg',
+    width: 1840,
+    height: 4000,
+  },
+  {
+    id: 'remonti-1-34',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-34.jpg',
+    fullSrc: '/galeria/full/remonti/1-34.jpg',
+    width: 1506,
+    height: 3264,
+  },
+  {
+    id: 'remonti-1-35',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-35.jpg',
+    fullSrc: '/galeria/full/remonti/1-35.jpg',
+    width: 1506,
+    height: 3264,
+  },
+  {
+    id: 'remonti-1-36',
+    categoryId: 'remonti',
+    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
+    thumbSrc: '/galeria/thumbs/remonti/1-36.jpg',
+    fullSrc: '/galeria/full/remonti/1-36.jpg',
+    width: 1506,
+    height: 3264,
   },
 ];
 
@@ -206,50 +252,28 @@ onBeforeUnmount(() => {
       </p>
     </section>
 
-    <section
-      class="rounded-3xl border border-gray-200 bg-white p-4 shadow-sm md:p-6"
-      aria-labelledby="gallery-tabs-title"
-    >
-      <div class="flex flex-col gap-4">
-        <div
-          class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
-          id="gallery-tabs-title"
+    <section>
+      <div
+        class="flex flex-wrap gap-3"
+        role="tablist"
+        aria-label="Категории в галерията"
+      >
+        <button
+          v-for="category in categories"
+          :key="category.id"
+          :aria-selected="activeTab === category.id"
+          :class="
+            activeTab === category.id
+              ? 'border-black bg-black text-white shadow-lg shadow-black/10'
+              : 'border-gray-200 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-700'
+          "
+          class="rounded-full border px-5 py-2.5 text-sm font-semibold transition"
+          role="tab"
+          type="button"
+          @click="activeTab = category.id"
         >
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-teal-700">
-              Изберете категория
-            </p>
-            <h2 class="mt-2 text-2xl font-semibold text-slate-900">
-              {{ currentCategory?.label }}
-            </h2>
-          </div>
-          <p class="max-w-xl text-sm leading-6 text-gray-500">
-            Табовете сменят снимките динамично, а при клик се отваря детайлен преглед на цял екран.
-          </p>
-        </div>
-
-        <div
-          class="flex flex-wrap gap-3"
-          role="tablist"
-          aria-label="Категории в галерията"
-        >
-          <button
-            v-for="category in categories"
-            :key="category.id"
-            :aria-selected="activeTab === category.id"
-            :class="
-              activeTab === category.id
-                ? 'border-black bg-black text-white shadow-lg shadow-black/10'
-                : 'border-gray-200 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-700'
-            "
-            class="rounded-full border px-5 py-2.5 text-sm font-semibold transition"
-            role="tab"
-            type="button"
-            @click="activeTab = category.id"
-          >
-            {{ category.label }}
-          </button>
-        </div>
+          {{ category.label }}
+        </button>
       </div>
     </section>
 
