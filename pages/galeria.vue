@@ -41,127 +41,18 @@ const galleryPage = {
   inLanguage: 'bg',
 };
 
-const categories: GalleryCategory[] = [
-  { id: 'all', label: 'Всички' },
-  { id: 'remonti', label: 'Ремонти' },
-];
+const { data: galleryData } = await useFetch<{
+  categories: GalleryCategory[];
+  images: GalleryImage[];
+}>('/api/gallery');
 
-const galleryImages: GalleryImage[] = [
-  {
-    id: 'remonti-1-5',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-5.jpg',
-    fullSrc: '/galeria/full/remonti/1-5.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-7',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-7.jpg',
-    fullSrc: '/galeria/full/remonti/1-7.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-10-2',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-10%20(2).jpg',
-    fullSrc: '/galeria/full/remonti/1-10%20(2).jpg',
-    width: 1600,
-    height: 1200,
-  },
-  {
-    id: 'remonti-1-12',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-12.jpg',
-    fullSrc: '/galeria/full/remonti/1-12.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-15',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-15.jpg',
-    fullSrc: '/galeria/full/remonti/1-15.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-19',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-19.jpg',
-    fullSrc: '/galeria/full/remonti/1-19.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-22',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-22.jpg',
-    fullSrc: '/galeria/full/remonti/1-22.jpg',
-    width: 4000,
-    height: 1840,
-  },
-  {
-    id: 'remonti-1-28',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-28.jpg',
-    fullSrc: '/galeria/full/remonti/1-28.jpg',
-    width: 1200,
-    height: 1600,
-  },
-  {
-    id: 'remonti-1-32',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-32.jpg',
-    fullSrc: '/galeria/full/remonti/1-32.jpg',
-    width: 1840,
-    height: 4000,
-  },
-  {
-    id: 'remonti-1-34',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-34.jpg',
-    fullSrc: '/galeria/full/remonti/1-34.jpg',
-    width: 1506,
-    height: 3264,
-  },
-  {
-    id: 'remonti-1-35',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-35.jpg',
-    fullSrc: '/galeria/full/remonti/1-35.jpg',
-    width: 1506,
-    height: 3264,
-  },
-  {
-    id: 'remonti-1-36',
-    categoryId: 'remonti',
-    alt: 'Снимка от ремонтен проект на Мани 12 ЕООД във Варна.',
-    thumbSrc: '/galeria/thumbs/remonti/1-36.jpg',
-    fullSrc: '/galeria/full/remonti/1-36.jpg',
-    width: 1506,
-    height: 3264,
-  },
-];
-
-const imageList = {
+const categories = computed(() => galleryData.value?.categories ?? []);
+const galleryImages = computed(() => galleryData.value?.images ?? []);
+const imageList = computed(() => ({
   '@type': 'ItemList',
   '@id': `${galleryUrl}#gallery-items`,
   name: 'Галерия на Мани 12 ЕООД',
-  itemListElement: galleryImages.map((image, index) => ({
+  itemListElement: galleryImages.value.map((image, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     item: {
@@ -174,11 +65,12 @@ const imageList = {
       height: image.height,
     },
   })),
-};
+}));
+const gallerySchema = computed(() =>
+  createSchemaGraph([website, localBusiness, galleryPage, imageList.value]),
+);
 
-const gallerySchema = createSchemaGraph([website, localBusiness, galleryPage, imageList]);
-
-useHead({
+useHead(() => ({
   title: seoTitle,
   link: [{ rel: 'canonical', href: galleryUrl }],
   meta: [
@@ -192,20 +84,20 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify(gallerySchema),
+      innerHTML: JSON.stringify(gallerySchema.value),
     },
   ],
-});
+}));
 
-const activeTab = ref(categories[0]?.id ?? '');
+const activeTab = ref('all');
 const galleryRef = ref<HTMLElement | null>(null);
 const currentCategory = computed(() =>
-  categories.find((category) => category.id === activeTab.value) ?? categories[0],
+  categories.value.find((category) => category.id === activeTab.value) ?? categories.value[0],
 );
 const visibleImages = computed(() =>
   activeTab.value === 'all'
-    ? galleryImages
-    : galleryImages.filter((image) => image.categoryId === activeTab.value),
+    ? galleryImages.value
+    : galleryImages.value.filter((image) => image.categoryId === activeTab.value),
 );
 
 let lightbox: PhotoSwipeLightbox | null = null;
