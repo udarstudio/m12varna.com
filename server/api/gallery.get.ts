@@ -1,7 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import imageSize from 'image-size';
-import { galleryAltOverrides, galleryCategoryLabels } from '~/data/gallery';
 
 type GalleryCategory = {
   id: string;
@@ -19,6 +18,12 @@ type GalleryImage = {
 };
 
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
+const galleryCategoryLabels: Record<string, string> = {
+  klimatizaciya: 'Климатизация',
+  remonti: 'Ремонти',
+  vik: 'ВиК',
+};
+const galleryAltOverrides: Record<string, string> = {};
 
 function normalizeSegment(value: string) {
   return value

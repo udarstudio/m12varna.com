@@ -74,7 +74,7 @@ const imageList = computed(() => ({
   })),
 }));
 const gallerySchema = computed(() =>
-  createSchemaGraph([website, localBusiness, galleryPage, imageList.value]),
+  createSchemaGraph([website, localBusiness, galleryPage, imageList.value])
 );
 
 useHead(() => ({
@@ -100,13 +100,13 @@ const activeTab = ref('all');
 const INITIAL_VISIBLE_COUNT = 48;
 const LOAD_MORE_STEP = 24;
 const visibleCount = ref(INITIAL_VISIBLE_COUNT);
-const currentCategory = computed(() =>
-  categories.value.find((category) => category.id === activeTab.value) ?? categories.value[0],
+const currentCategory = computed(
+  () => categories.value.find((category) => category.id === activeTab.value) ?? categories.value[0]
 );
 const filteredImages = computed(() =>
   activeTab.value === 'all'
     ? galleryImages.value
-    : galleryImages.value.filter((image) => image.categoryId === activeTab.value),
+    : galleryImages.value.filter((image) => image.categoryId === activeTab.value)
 );
 const visibleImages = computed(() => filteredImages.value.slice(0, visibleCount.value));
 const hasMoreImages = computed(() => visibleImages.value.length < filteredImages.value.length);
@@ -117,7 +117,7 @@ const photoSwipeItems = computed<PhotoSwipeItem[]>(() =>
     width: image.width,
     height: image.height,
     alt: image.alt,
-  })),
+  }))
 );
 
 watch(activeTab, () => {
@@ -156,17 +156,13 @@ async function openLightbox(startIndex: number) {
     <section class="flex flex-col gap-4">
       <h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Галерия</h1>
       <p class="max-w-3xl text-lg">
-        Подбрахме кратка галерия с проекти от климатизация, ремонтни дейности и вентилационни
-        решения. Изберете категория, разгледайте снимките и отворете всяка визия на цял екран.
+        Разгледайте нашата галерия от завършени проекти в областта на климатизацията, ремонтните
+        дейности и ВиК. Изберете категория и отворете всяка снимка в цял размер.
       </p>
     </section>
 
     <section>
-      <div
-        class="flex flex-wrap gap-3"
-        role="tablist"
-        aria-label="Категории в галерията"
-      >
+      <div class="flex flex-wrap gap-3" role="tablist" aria-label="Категории в галерията">
         <button
           v-for="category in categories"
           :key="category.id"
@@ -186,7 +182,10 @@ async function openLightbox(startIndex: number) {
       </div>
     </section>
 
-    <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3" :aria-label="`Снимки в категория ${currentCategory?.label}`">
+    <section
+      class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      :aria-label="`Снимки в категория ${currentCategory?.label}`"
+    >
       <article
         v-for="image in visibleImages"
         :key="image.id"
