@@ -2,15 +2,163 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://remonti-varna.bg/</loc>
-        <lastmod>2026-03-23T12:21:19Z</lastmod>
+        <lastmod>2026-04-18T13:37:33Z</lastmod>
+    </url>
+    <url>
+        <loc>https://remonti-varna.bg/galeria</loc>
+        <lastmod>2026-04-18T13:37:33Z</lastmod>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-03.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-04.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-05.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-06.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-buferen-sad-kotelno-varna-07.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-drenazh-fasada-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-izolirani-trabi-kotelno-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-izvodi-za-podovo-otoplenie-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kolektor-podovo-stena-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kolektor-podovo-stroezh-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kolektor-podovo-stroezh-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kolektor-podovo-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kotel-ferroli-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-kotelno-trabi-stroezh-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-otvodnyavane-fasada-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-podov-klimatik-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-podov-klimatik-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-podovo-otoplenie-serpentina-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-pompa-kotelno-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-pompa-kotelno-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-pompesen-vazel-kotelno-varna-03.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-pompesen-vazel-kotelno-varna-04.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-radiator-lira-banya-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-03.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-04.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-05.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-06.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-07.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-terasa-trasa-klimatik-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-terasa-trasa-klimatik-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-traben-put-stroezh-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-traben-put-stroezh-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-klimatik-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-klimatik-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-02.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-03.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-04.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-05.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-06.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-07.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-08.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trasa-fasada-varna-01.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://remonti-varna.bg/galeria/thumbs/klimatizaciya/klimatizaciya-trasa-fasada-varna-02.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://remonti-varna.bg/kontakti</loc>
-        <lastmod>2026-03-23T12:21:19Z</lastmod>
+        <lastmod>2026-04-18T13:37:33Z</lastmod>
     </url>
     <url>
         <loc>https://remonti-varna.bg/partnyori</loc>
-        <lastmod>2026-03-23T12:21:19Z</lastmod>
+        <lastmod>2026-04-18T13:37:33Z</lastmod>
         <image:image>
             <image:loc>https://remonti-varna.bg/partnyori/schetovodna-kantora-mi-24.png</image:loc>
         </image:image>
@@ -25,4 +173,4 @@
         </image:image>
     </url>
 </urlset>
-<!-- XML Sitemap generated by @nuxtjs/sitemap v7.6.0 at 2026-03-23T12:21:27.216Z -->
+<!-- XML Sitemap generated by @nuxtjs/sitemap v7.6.0 at 2026-04-18T13:37:39.994Z -->
