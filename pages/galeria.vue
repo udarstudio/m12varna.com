@@ -202,8 +202,8 @@ async function openLightbox(startIndex: number) {
             <img
               :src="image.thumbSrc"
               :alt="image.alt"
-              width="800"
-              height="600"
+              :width="image.width"
+              :height="image.height"
               class="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
               loading="lazy"
             />
