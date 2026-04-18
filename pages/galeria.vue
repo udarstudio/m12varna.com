@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import 'photoswipe/style.css';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
 type GalleryCategory = {
   id: string;
@@ -16,6 +15,14 @@ type GalleryImage = {
   fullSrc: string;
   width: number;
   height: number;
+};
+
+type PhotoSwipeItem = {
+  src: string;
+  msrc: string;
+  width: number;
+  height: number;
+  alt: string;
 };
 
 const appConfig = useAppConfig();
@@ -90,33 +97,48 @@ useHead(() => ({
 }));
 
 const activeTab = ref('all');
-const galleryRef = ref<HTMLElement | null>(null);
+const INITIAL_VISIBLE_COUNT = 48;
+const LOAD_MORE_STEP = 24;
+const visibleCount = ref(INITIAL_VISIBLE_COUNT);
 const currentCategory = computed(() =>
   categories.value.find((category) => category.id === activeTab.value) ?? categories.value[0],
 );
-const visibleImages = computed(() =>
+const filteredImages = computed(() =>
   activeTab.value === 'all'
     ? galleryImages.value
     : galleryImages.value.filter((image) => image.categoryId === activeTab.value),
 );
+const visibleImages = computed(() => filteredImages.value.slice(0, visibleCount.value));
+const hasMoreImages = computed(() => visibleImages.value.length < filteredImages.value.length);
+const photoSwipeItems = computed<PhotoSwipeItem[]>(() =>
+  filteredImages.value.map((image) => ({
+    src: image.fullSrc,
+    msrc: image.thumbSrc,
+    width: image.width,
+    height: image.height,
+    alt: image.alt,
+  })),
+);
 
-let lightbox: PhotoSwipeLightbox | null = null;
+watch(activeTab, () => {
+  visibleCount.value = INITIAL_VISIBLE_COUNT;
+});
 
-onMounted(() => {
-  if (!galleryRef.value) {
-    return;
-  }
+function showMoreImages() {
+  visibleCount.value += LOAD_MORE_STEP;
+}
 
-  lightbox = new PhotoSwipeLightbox({
-    gallery: galleryRef.value,
-    children: 'a[data-pswp-width]',
-    pswpModule: () => import('photoswipe'),
+async function openLightbox(startIndex: number) {
+  const { default: PhotoSwipe } = await import('photoswipe');
+  const pswp = new PhotoSwipe({
+    dataSource: photoSwipeItems.value,
+    index: startIndex,
     showHideAnimationType: 'zoom',
     bgOpacity: 0.92,
   });
 
-  lightbox.on('uiRegister', () => {
-    lightbox?.pswp?.ui?.registerElement({
+  pswp.on('uiRegister', () => {
+    pswp.ui.registerElement({
       name: 'gallery-note',
       order: 9,
       isButton: false,
@@ -125,13 +147,8 @@ onMounted(() => {
     });
   });
 
-  lightbox.init();
-});
-
-onBeforeUnmount(() => {
-  lightbox?.destroy();
-  lightbox = null;
-});
+  pswp.init();
+}
 </script>
 
 <template>
@@ -169,11 +186,7 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section
-      ref="galleryRef"
-      class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-      :aria-label="`Снимки в категория ${currentCategory?.label}`"
-    >
+    <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3" :aria-label="`Снимки в категория ${currentCategory?.label}`">
       <article
         v-for="image in visibleImages"
         :key="image.id"
@@ -181,11 +194,9 @@ onBeforeUnmount(() => {
       >
         <a
           :href="image.fullSrc"
-          :data-pswp-width="image.width"
-          :data-pswp-height="image.height"
-          :data-cropped="true"
           :aria-label="`Отвори ${image.caption || image.alt} на цял екран`"
           class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-4"
+          @click.prevent="openLightbox(filteredImages.findIndex((entry) => entry.id === image.id))"
         >
           <figure class="overflow-hidden bg-slate-100">
             <img
@@ -200,6 +211,16 @@ onBeforeUnmount(() => {
         </a>
       </article>
     </section>
+
+    <div v-if="hasMoreImages" class="flex justify-center">
+      <button
+        class="rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-teal-500 hover:text-teal-700"
+        type="button"
+        @click="showMoreImages"
+      >
+        Покажи още
+      </button>
+    </div>
   </main>
 </template>
 
