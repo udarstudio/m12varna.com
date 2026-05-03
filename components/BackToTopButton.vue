@@ -10,6 +10,7 @@ const props = withDefaults(
   }
 );
 
+const hasMounted = ref(false);
 const isVisible = ref(false);
 
 function updateVisibility() {
@@ -24,6 +25,7 @@ function scrollToTop() {
 }
 
 onMounted(() => {
+  hasMounted.value = true;
   updateVisibility();
   window.addEventListener('scroll', updateVisibility, { passive: true });
 });
@@ -35,6 +37,7 @@ onBeforeUnmount(() => {
 
 <template>
   <button
+    v-if="hasMounted"
     :class="
       isVisible
         ? 'translate-y-0 opacity-100'
