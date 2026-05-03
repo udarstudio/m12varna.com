@@ -220,6 +220,8 @@ async function openLightbox(startIndex: number) {
         Покажи още
       </button>
     </div>
+
+    <BackToTopButton />
   </main>
 </template>
 
