@@ -4,7 +4,13 @@
       <div class="grid gap-8 text-sm text-gray-200 md:grid-cols-3">
         <div class="flex flex-col gap-3">
           <NuxtLink to="/" aria-label="Начало" class="flex w-fit items-center gap-3">
-            <img width="48" height="46" :src="logoUrl" alt="M12 Varna" class="h-11 w-auto" />
+            <img
+              width="48"
+              height="46"
+              src="/mani-12-eood-logo.png"
+              alt="M12 Varna"
+              class="h-11 w-auto"
+            />
             <span class="text-xs font-semibold uppercase tracking-[0.16em] text-gray-400">
               {{ appConfig.siteName }}
             </span>
@@ -57,7 +63,6 @@
 
 <script setup>
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
-import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 
 const appConfig = useAppConfig();
 const { navItems } = useNavigation();

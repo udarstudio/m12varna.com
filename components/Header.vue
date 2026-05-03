@@ -6,7 +6,7 @@
         aria-label="Начало"
         class="site-header__logo relative z-10 flex items-center p-2 bg-black"
       >
-        <img width="64" height="61" :src="logoUrl" alt="M12 Varna" />
+        <img width="64" height="61" src="/mani-12-eood-logo.png" alt="M12 Varna" />
       </NuxtLink>
 
       <div
@@ -52,7 +52,10 @@
                 class="mx-4 inline-block h-7 w-px bg-gray-300"
                 aria-hidden="true"
               ></span>
-              <NuxtLink class="px-2 py-2 text-gray-700 transition hover:text-gray-900" :to="item.href">
+              <NuxtLink
+                class="px-2 py-2 text-gray-700 transition hover:text-gray-900"
+                :to="item.href"
+              >
                 {{ item.label }}
               </NuxtLink>
             </li>
@@ -82,7 +85,6 @@
 
 <script setup>
 import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24/solid';
-import logoUrl from '~/assets/images/mani-12-eood-logo.png';
 
 const isMenuOpen = ref(false);
 const appConfig = useAppConfig();
