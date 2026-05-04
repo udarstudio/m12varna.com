@@ -13,14 +13,14 @@
         class="relative site-header__bar gap-5 bg-black px-6 flex items-center justify-end text-xs text-white"
       >
         <a
-          class="flex items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80"
+          class="flex items-center gap-1 p-2 font-semibold tracking-wide text-white transition hover:text-gray-300"
           :href="`tel:${appConfig.phoneNumberRaw}`"
         >
           <PhoneIcon class="h-3 w-3" />
           {{ appConfig.phoneNumber }}
         </a>
         <a
-          class="items-center p-2 gap-1 font-semibold tracking-wide hover:text-white/80 hidden md:flex"
+          class="hidden items-center gap-1 p-2 font-semibold tracking-wide text-white transition hover:text-gray-300 md:flex"
           :href="`mailto:${appConfig.email}`"
         >
           <EnvelopeIcon class="h-3 w-3" />

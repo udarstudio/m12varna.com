@@ -23,18 +23,34 @@
             >Контакти</span
           >
           <a
-            class="flex w-fit items-center gap-2 transition hover:text-white"
+            class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
             :href="`tel:${appConfig.phoneNumberRaw}`"
           >
             <PhoneIcon class="h-4 w-4" />
+
             {{ appConfig.phoneNumber }}
           </a>
           <a
-            class="flex w-fit items-center gap-2 transition hover:text-white"
+            class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
             :href="`mailto:${appConfig.email}`"
           >
             <EnvelopeIcon class="h-4 w-4" />
+
             {{ appConfig.email }}
+          </a>
+          <a
+            class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
+            href="https://www.facebook.com/profile.php?id=100069276856198"
+            target="_blank"
+            rel="nofollow"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56v1.9h2.77l-.44 2.91h-2.33V22C18.34 21.24 22 17.08 22 12.06Z"
+              />
+            </svg>
+
+            Фирма "Мани 12"
           </a>
         </div>
 
@@ -45,7 +61,8 @@
           <NuxtLink
             v-for="item in navItems"
             :key="item.href"
-            class="w-fit transition hover:text-white"
+            class="w-fit text-white transition hover:text-gray-300"
+            exact-active-class="font-bold italic !text-gray-300"
             :to="item.href"
           >
             {{ item.label }}
