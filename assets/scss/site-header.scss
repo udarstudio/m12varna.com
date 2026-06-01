@@ -1,36 +1,36 @@
 .site-header {
-  background: linear-gradient(to bottom, #b8bcbc, #ecefef);
+	background: linear-gradient(to bottom, #b8bcbc, #ecefef);
 
-  &__logo {
-    position: absolute;
-    left: 1.5rem;
-    bottom: 0;
+	&__logo {
+		position: absolute;
+		left: 1.5rem;
+		bottom: 0;
 
-    img {
-      width: 64px;
-      height: auto;
-    }
-  }
+		img {
+			width: 64px;
+			height: auto;
+		}
+	}
 
-  &__bar {
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 100%;
-      bottom: 0;
-      width: 100vw;
-      background-color: inherit;
-    }
+	&__bar {
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 100%;
+			bottom: 0;
+			width: 100vw;
+			background-color: inherit;
+		}
 
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 100%;
-      bottom: 0;
-      width: 100vw;
-      background-color: inherit;
-    }
-  }
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 100%;
+			bottom: 0;
+			width: 100vw;
+			background-color: inherit;
+		}
+	}
 }
