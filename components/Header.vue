@@ -29,34 +29,31 @@
 				</a>
 			</div>
 
-			<nav>
-				<div
-					class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 text-md text-gray-700"
-				>
+			<nav class="site-header__nav" :class="{ 'site-header__nav--open': isMenuOpen }">
+				<div class="site-header__nav-row mx-auto max-w-5xl px-6 py-4 text-gray-700">
 					<span> </span>
 
 					<button
-						class="inline-flex items-center justify-center rounded-md p-2 text-gray-700 transition hover:text-gray-900 md:hidden"
+						class="site-header__menu-button"
 						type="button"
 						aria-label="Отвори меню"
 						:aria-expanded="isMenuOpen"
+						aria-controls="mobile-navigation"
 						@click="isMenuOpen = !isMenuOpen"
 					>
-						<Bars3Icon v-if="!isMenuOpen" class="h-6 w-6" />
+						<Bars3Icon v-if="!isMenuOpen" class="h-7 w-7" />
 
-						<XMarkIcon v-else class="h-6 w-6" />
+						<XMarkIcon v-else class="h-7 w-7" />
 					</button>
 
-					<ul class="hidden items-center text-gray-300 md:flex">
-						<li v-for="(item, index) in navItems" :key="item.label" class="flex items-center">
-							<span
-								v-if="index !== 0"
-								class="mx-4 inline-block h-7 w-px bg-gray-300"
-								aria-hidden="true"
-							></span>
+					<ul class="site-header__nav-list site-header__nav-list--desktop">
+						<li v-for="(item, index) in navItems" :key="item.label" class="site-header__nav-item">
+							<span v-if="index !== 0" class="site-header__nav-separator" aria-hidden="true"></span>
 
 							<NuxtLink
-								class="px-2 py-2 text-gray-700 transition hover:text-gray-900"
+								class="site-header__nav-link"
+								active-class="site-header__nav-link--active"
+								exact-active-class="site-header__nav-link--active"
 								:to="item.href"
 							>
 								{{ item.label }}
@@ -65,22 +62,19 @@
 					</ul>
 				</div>
 
-				<div
-					v-if="isMenuOpen"
-					class="absolute top-full left-0 right-0 border-t border-gray-200 bg-white md:hidden"
-				>
-					<ul class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-4 text-sm text-gray-700">
-						<li v-for="item in navItems" :key="item.label">
-							<NuxtLink
-								class="block rounded-md px-3 py-2 transition hover:bg-gray-100"
-								:to="item.href"
-								@click="isMenuOpen = false"
-							>
-								{{ item.label }}
-							</NuxtLink>
-						</li>
-					</ul>
-				</div>
+				<ul id="mobile-navigation" class="site-header__nav-list site-header__nav-list--mobile">
+					<li v-for="item in navItems" :key="item.label" class="site-header__nav-item">
+						<NuxtLink
+							class="site-header__nav-link"
+							active-class="site-header__nav-link--active"
+							exact-active-class="site-header__nav-link--active"
+							:to="item.href"
+							@click="isMenuOpen = false"
+						>
+							{{ item.label }}
+						</NuxtLink>
+					</li>
+				</ul>
 			</nav>
 		</div>
 	</header>

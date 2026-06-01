@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://remonti-varna.bg/sitemap.xml
