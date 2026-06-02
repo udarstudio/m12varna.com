@@ -1,6 +1,10 @@
 <template>
-	<header class="site-header">
-		<div class="relative mx-auto max-w-5xl">
+	<header
+		ref="headerElement"
+		class="site-header"
+		:class="{ 'site-header--menu-open': isMenuOpen }"
+	>
+		<div class="site-header__inner relative mx-auto max-w-5xl">
 			<NuxtLink
 				to="/"
 				aria-label="Начало"
@@ -77,6 +81,13 @@
 				</ul>
 			</nav>
 		</div>
+
+		<button
+			class="site-header__overlay"
+			type="button"
+			aria-label="Затвори менюто"
+			@click="isMenuOpen = false"
+		></button>
 	</header>
 </template>
 
@@ -84,8 +95,37 @@
 import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 
 const isMenuOpen = ref(false);
+const headerElement = ref(null);
+let originalBodyOverflow = '';
 const appConfig = useAppConfig();
 const { navItems } = useNavigation();
+
+function closeMenuOnOutsideClick(event) {
+	if (!isMenuOpen.value || headerElement.value?.contains(event.target)) {
+		return;
+	}
+
+	isMenuOpen.value = false;
+}
+
+watch(isMenuOpen, (isOpen) => {
+	if (isOpen) {
+		originalBodyOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		return;
+	}
+
+	document.body.style.overflow = originalBodyOverflow;
+});
+
+onMounted(() => {
+	document.addEventListener('pointerdown', closeMenuOnOutsideClick);
+});
+
+onBeforeUnmount(() => {
+	document.body.style.overflow = originalBodyOverflow;
+	document.removeEventListener('pointerdown', closeMenuOnOutsideClick);
+});
 </script>
 
 <style scoped lang="scss">

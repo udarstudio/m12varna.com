@@ -1,5 +1,12 @@
 .site-header {
+	position: relative;
+	z-index: 30;
 	background: linear-gradient(to bottom, #b8bcbc, #ecefef);
+
+	&__inner {
+		position: relative;
+		z-index: 1;
+	}
 
 	&__logo {
 		position: absolute;
@@ -145,6 +152,27 @@
 		display: none;
 	}
 
+	&__overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		border: 0;
+		background-color: rgba(0, 0, 0, 0.55);
+		cursor: default;
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		transition:
+			opacity 0.3s,
+			visibility 0.3s;
+	}
+
+	&--menu-open &__overlay {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
 	@media (min-width: 768px) {
 		&__menu-button {
 			display: none;
@@ -164,6 +192,10 @@
 		}
 
 		&__nav-list--mobile {
+			display: none;
+		}
+
+		&__overlay {
 			display: none;
 		}
 
