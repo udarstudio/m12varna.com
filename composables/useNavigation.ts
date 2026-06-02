@@ -1,6 +1,7 @@
 const navItems = [
 	{ label: 'За нас', href: '/' },
 	{ label: 'Галерия', href: '/galeria' },
+	{ label: 'Цени', href: '/ceni' },
 	{ label: 'Партньори', href: '/partnyori' },
 	{ label: 'Контакти', href: '/kontakti' },
 ];
