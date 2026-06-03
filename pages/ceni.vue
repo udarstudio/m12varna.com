@@ -31,7 +31,7 @@ const prices = [
 		service: 'Стойки поцинковани',
 		unit: 'к-т',
 		price: '30,00 €',
-		note: 'Включва крепежи',
+		note: 'Включва крепежи.',
 	},
 	{
 		service: 'Допълнителен захранващ кабел',
@@ -43,7 +43,7 @@ const prices = [
 		service: 'Демонтаж на сплит система',
 		unit: 'бр.',
 		price: '60-100,00 €',
-		note: 'В зависимост от големината на машината',
+		note: 'В зависимост от големината на машината.',
 	},
 	{
 		service: 'PVC тръба за конденз',
@@ -67,7 +67,7 @@ const prices = [
 		service: 'Вкопаване в бетон',
 		unit: 'м.л.',
 		price: '40-60,00 €',
-		note: 'По принцип се избягва като дейност, извършва се в крайна необходимост.',
+		note: 'Избягва се като дейност, извършва се в крайна необходимост.',
 	},
 	{
 		service: 'Втори отвор за тръбен сноп',
@@ -79,37 +79,37 @@ const prices = [
 		service: 'Тампони',
 		unit: 'к-т',
 		price: '20-40,00 €',
-		note: 'В зависимост от големината на машината',
+		note: 'В зависимост от големината на машината.',
 	},
 	{
 		service: 'Демонтаж и монтаж на стъклопакет',
 		unit: 'бр.',
 		price: '40,00 €',
-		note: 'Без гаранция за стъклопакета',
+		note: 'Без гаранция за стъклопакета.',
 	},
 	{
 		service: 'Използване на алпийски способ',
 		unit: 'ч.ден',
 		price: '200,00 €',
-		note: 'Доплаща се при необходимост',
+		note: 'Доплаща се при необходимост.',
 	},
 	{
 		service: 'Монтаж с използване на висока стълба',
 		unit: 'бр.',
 		price: '70,00 €',
-		note: 'Доплаща се към стандартния монтаж',
+		note: 'Доплаща се към стандартния монтаж.',
 	},
 	{
 		service: 'Транспорт извън град Варна',
 		unit: 'км.',
 		price: '0,70 €',
-		note: 'Изчислява се в двете посоки',
+		note: 'Изчислява се в двете посоки.',
 	},
 	{
 		service: 'Качване на техника след 2 етаж (без асансьор)',
 		unit: 'ет.',
 		price: '6,00 €',
-		note: 'Плаща се на брой кашони за всеки етаж и всеки човек необходим за качването',
+		note: 'Плаща се на брой кашони за всеки етаж и всеки човек необходим за качването.',
 	},
 	{
 		service: 'Продухване с азот',
@@ -121,7 +121,7 @@ const prices = [
 		service: 'Азотна проба',
 		unit: 'бр.',
 		price: '60,00 €',
-		note: '24 часа',
+		note: '24 часа.',
 	},
 	{
 		service: 'Профилактика на сплит система 9-12-18-24',
@@ -172,19 +172,13 @@ useHead({
 			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Ценова листа</h1>
 
 			<p class="max-w-3xl text-lg">
-				Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности при климатични
-				системи във Варна и региона.
-			</p>
-
-			<p
-				class="w-fit rounded-full border border-teal-200 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-800"
-			>
-				Цените са в евро без ДДС.
+				Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности свързани с
+				климатични системи във Варна и региона.
 			</p>
 		</section>
 
 		<section class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-			<div class="border-b border-gray-200 bg-slate-50 px-5 py-4">
+			<div class="px-5 py-4">
 				<h2 class="text-2xl font-semibold text-slate-900">{{ category }}</h2>
 			</div>
 
@@ -225,8 +219,12 @@ useHead({
 			</div>
 		</section>
 
+		<p class="w-fit rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold">
+			Цените са без ДДС
+		</p>
+
 		<section
-			class="flex flex-col gap-4 rounded-3xl border border-gray-200 bg-slate-50 p-6 md:flex-row md:items-center md:justify-between"
+			class="flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white shadow-sm p-6 mt-6 md:flex-row md:items-center md:justify-between"
 		>
 			<div class="max-w-2xl">
 				<h2 class="text-2xl font-semibold text-slate-900">Нужен е точен оглед?</h2>
