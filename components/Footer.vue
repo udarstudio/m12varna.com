@@ -85,7 +85,7 @@
 	</footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();

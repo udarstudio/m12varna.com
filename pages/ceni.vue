@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
 const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
@@ -13,8 +13,7 @@ const prices = [
 		service: 'Монтаж-стандартен сплит система 9-12',
 		unit: 'бр.',
 		price: '180,00 €',
-		note:
-			'До 3 м.л. тръбен път и пряк достъп до външно тяло. За по-големи машини цената се определя индивидуално след оглед.',
+		note: 'До 3 м.л. тръбен път и пряк достъп до външно тяло. За по-големи машини цената се определя индивидуално след оглед.',
 	},
 	{
 		service: 'Допълнителен тръбен път (6/10)',
@@ -170,17 +169,11 @@ useHead({
 <template>
 	<main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16 text-gray-700">
 		<section class="flex flex-col gap-4">
-			<p class="text-sm font-semibold uppercase tracking-[0.12em] text-teal-700">
-				Ценова листа
-			</p>
-
-			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
-				Цени за услуги
-			</h1>
+			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Ценова листа</h1>
 
 			<p class="max-w-3xl text-lg">
-				Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности при
-				климатични системи във Варна и региона.
+				Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности при климатични
+				системи във Варна и региона.
 			</p>
 
 			<p
@@ -197,33 +190,35 @@ useHead({
 
 			<div class="overflow-x-auto">
 				<table class="min-w-[860px] divide-y divide-gray-200 text-left">
-						<thead class="bg-slate-900 text-xs uppercase tracking-[0.12em] text-white">
-							<tr>
-								<th scope="col" class="w-[36%] px-5 py-4 font-semibold">Услуга</th>
+					<thead class="bg-slate-900 text-xs uppercase tracking-[0.12em] text-white">
+						<tr>
+							<th scope="col" class="w-[36%] px-5 py-4 font-semibold">Услуга</th>
 
-								<th scope="col" class="w-[10%] px-4 py-4 text-center font-semibold">МЕ</th>
+							<th scope="col" class="w-[10%] px-4 py-4 text-center font-semibold">МЕ</th>
 
-								<th scope="col" class="w-[16%] px-4 py-4 text-right font-semibold">Цена</th>
+							<th scope="col" class="w-[16%] px-4 py-4 text-right font-semibold">Цена</th>
 
-								<th scope="col" class="w-[38%] px-5 py-4 font-semibold">Забележка</th>
-							</tr>
-						</thead>
+							<th scope="col" class="w-[38%] px-5 py-4 font-semibold">Забележка</th>
+						</tr>
+					</thead>
 
 					<tbody class="divide-y divide-gray-100">
 						<tr v-for="item in prices" :key="item.service" class="transition hover:bg-slate-50">
-								<th scope="row" class="px-5 py-4 text-sm font-semibold text-slate-900">
-									{{ item.service }}
-								</th>
+							<th scope="row" class="px-5 py-4 text-sm font-semibold text-slate-900">
+								{{ item.service }}
+							</th>
 
-								<td class="px-4 py-4 text-center text-sm text-gray-600">{{ item.unit }}</td>
+							<td class="px-4 py-4 text-center text-sm text-gray-600">{{ item.unit }}</td>
 
-								<td class="whitespace-nowrap px-4 py-4 text-right text-sm font-semibold text-slate-900">
-									{{ item.price }}
-								</td>
+							<td
+								class="whitespace-nowrap px-4 py-4 text-right text-sm font-semibold text-slate-900"
+							>
+								{{ item.price }}
+							</td>
 
-								<td class="px-5 py-4 text-sm leading-6 text-gray-600">
-									{{ item.note || '—' }}
-								</td>
+							<td class="px-5 py-4 text-sm leading-6 text-gray-600">
+								{{ item.note || '—' }}
+							</td>
 						</tr>
 					</tbody>
 				</table>

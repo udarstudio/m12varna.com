@@ -91,17 +91,17 @@
 	</header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Bars3Icon, EnvelopeIcon, PhoneIcon, XMarkIcon } from '@heroicons/vue/24/solid';
 
 const isMenuOpen = ref(false);
-const headerElement = ref(null);
+const headerElement = ref<HTMLElement | null>(null);
 let originalBodyOverflow = '';
 const appConfig = useAppConfig();
 const { navItems } = useNavigation();
 
-function closeMenuOnOutsideClick(event) {
-	if (!isMenuOpen.value || headerElement.value?.contains(event.target)) {
+function closeMenuOnOutsideClick(event: PointerEvent) {
+	if (!isMenuOpen.value || headerElement.value?.contains(event.target as Node)) {
 		return;
 	}
 

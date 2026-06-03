@@ -1,9 +1,9 @@
-<script setup>
+<script setup lang="ts">
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
 const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
 const isSubmitting = ref(false);
-const submitState = ref('idle');
+const submitState = ref<'idle' | 'success' | 'error'>('idle');
 const submitMessage = ref('');
 const seoTitle = `Контакти | ${appConfig.siteName}`;
 const seoDescription =
@@ -45,8 +45,8 @@ const contactPage = {
 };
 const contactSchema = createSchemaGraph([website, localBusiness, contactWebPage, contactPage]);
 
-async function submitContactForm(event) {
-	const form = event.target;
+async function submitContactForm(event: Event) {
+	const form = event.target as HTMLFormElement;
 	const formData = new FormData(form);
 
 	isSubmitting.value = true;

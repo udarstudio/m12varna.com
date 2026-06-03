@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
