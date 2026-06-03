@@ -6,8 +6,55 @@ const siteUrl = siteConfig.url || 'https://remonti-varna.bg';
 const pricesUrl = `${siteUrl}/ceni`;
 const seoTitle = `Цени | ${appConfig.siteName}`;
 const seoDescription =
-	'Цени в евро без ДДС за монтаж, демонтаж, профилактика и допълнителни климатични услуги от Мани 12 ЕООД във Варна.';
-const category = 'Климатизация';
+	'Ориентировъчни цени за климатични услуги и информация за оферти след оглед за ремонтни, ВиК, електро и монтажни дейности от Мани 12 ЕООД във Варна.';
+type PriceCategory = {
+	id: string;
+	label: string;
+	title: string;
+	description: string;
+};
+
+const priceCategories: PriceCategory[] = [
+	{
+		id: 'klimatizaciya',
+		label: 'Климатизация',
+		title: 'Климатизация',
+		description: 'Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности.',
+	},
+	{
+		id: 'remonti',
+		label: 'Ремонти',
+		title: 'Ремонтни дейности',
+		description:
+			'Цената за ремонтни дейности се определя след оглед и конкретна оферта според състоянието на обекта, обема работа, материалите и сроковете за изпълнение.',
+	},
+	{
+		id: 'vik',
+		label: 'ВиК',
+		title: 'ВиК услуги',
+		description:
+			'Цената за ВиК услуги зависи от вида на инсталацията, достъпа, нужните материали и сложността на ремонта. Конкретна цена се дава след оглед.',
+	},
+	{
+		id: 'elektro',
+		label: 'Електро',
+		title: 'Електро услуги',
+		description:
+			'Цената за електро услуги се определя според обема работа, състоянието на инсталацията и необходимите материали. След оглед изготвяме конкретна оферта.',
+	},
+	{
+		id: 'montazhi',
+		label: 'Дограма и монтажи',
+		title: 'Дограма и монтажи',
+		description:
+			'Цената зависи от вида монтаж, размерите, достъпа и допълнителните дейности. Конкретна оферта се подготвя след оглед.',
+	},
+];
+const activeCategoryId = ref(priceCategories[0].id);
+const activeCategory = computed(
+	() => priceCategories.find((category) => category.id === activeCategoryId.value) || priceCategories[0]
+);
+const hasClimatePrices = computed(() => activeCategory.value.id === 'klimatizaciya');
 const prices = [
 	{
 		service: 'Монтаж-стандартен сплит система 9-12',
@@ -172,17 +219,38 @@ useHead({
 			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Ценова листа</h1>
 
 			<p class="max-w-3xl text-lg">
-				Ориентировъчни цени за монтаж, демонтаж, профилактика и допълнителни дейности свързани с
-				климатични системи във Варна и региона.
+				За климатични услуги публикуваме ориентировъчни цени. За останалите дейности цената се
+				определя след оглед и конкретна оферта според реалните условия на място.
 			</p>
 		</section>
 
+		<div class="flex gap-2 overflow-x-auto rounded-3xl border border-gray-200 bg-white p-2 shadow-sm">
+			<button
+				v-for="category in priceCategories"
+				:key="category.id"
+				type="button"
+				class="whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-semibold transition"
+				:class="
+					activeCategoryId === category.id
+						? 'border-black bg-black text-white shadow-sm'
+						: 'border-transparent text-slate-700 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900'
+				"
+				@click="activeCategoryId = category.id"
+			>
+				{{ category.label }}
+			</button>
+		</div>
+
 		<section class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-			<div class="px-5 py-4">
-				<h2 class="text-2xl font-semibold text-slate-900">{{ category }}</h2>
+			<div class="border-b border-gray-200 px-5 py-4">
+				<h2 class="text-2xl font-semibold text-slate-900">{{ activeCategory.title }}</h2>
+
+				<p class="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
+					{{ activeCategory.description }}
+				</p>
 			</div>
 
-			<div class="overflow-x-auto">
+			<div v-if="hasClimatePrices" class="overflow-x-auto">
 				<table class="min-w-[860px] divide-y divide-gray-200 text-left">
 					<thead class="bg-slate-900 text-xs uppercase tracking-[0.12em] text-white">
 						<tr>
@@ -216,6 +284,25 @@ useHead({
 						</tr>
 					</tbody>
 				</table>
+			</div>
+
+			<div v-else class="grid gap-5 p-6 md:grid-cols-[1fr_auto] md:items-center">
+				<div class="max-w-3xl">
+					<p class="text-lg font-semibold text-slate-900">Цената се дава след оглед</p>
+
+					<p class="mt-2 leading-7">
+						За тези дейности крайната стойност зависи от обема работа, достъпа, състоянието на
+						обекта, нужните материали и сроковете. След оглед подготвяме конкретна оферта според
+						реалните условия.
+					</p>
+				</div>
+
+				<NuxtLink
+					to="/kontakti"
+					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+				>
+					Заявете оглед
+				</NuxtLink>
 			</div>
 		</section>
 
