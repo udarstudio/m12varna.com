@@ -224,30 +224,46 @@ useHead({
 			</p>
 		</section>
 
-		<div class="flex gap-2 overflow-x-auto rounded-3xl border border-gray-200 bg-white p-2 shadow-sm">
-			<button
-				v-for="category in priceCategories"
-				:key="category.id"
-				type="button"
-				class="whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-semibold transition"
-				:class="
-					activeCategoryId === category.id
-						? 'border-black bg-black text-white shadow-sm'
-						: 'border-transparent text-slate-700 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900'
-				"
-				@click="activeCategoryId = category.id"
-			>
-				{{ category.label }}
-			</button>
-		</div>
+		<section>
+			<div class="flex flex-wrap gap-3" role="tablist" aria-label="Категории в ценовата листа">
+				<button
+					v-for="category in priceCategories"
+					:key="category.id"
+					:aria-selected="activeCategoryId === category.id"
+					type="button"
+					class="rounded-full border px-5 py-2.5 text-sm font-semibold transition"
+					:class="
+						activeCategoryId === category.id
+							? 'border-black bg-black text-white shadow-lg shadow-black/10'
+							: 'border-gray-200 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-700'
+					"
+					role="tab"
+					@click="activeCategoryId = category.id"
+				>
+					{{ category.label }}
+				</button>
+			</div>
+		</section>
 
 		<section class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
-			<div class="border-b border-gray-200 px-5 py-4">
-				<h2 class="text-2xl font-semibold text-slate-900">{{ activeCategory.title }}</h2>
+			<div
+				class="grid gap-5 border-b border-gray-200 px-5 py-4 md:grid-cols-[1fr_auto] md:items-center"
+			>
+				<div>
+					<h2 class="text-2xl font-semibold text-slate-900">{{ activeCategory.title }}</h2>
 
-				<p class="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
-					{{ activeCategory.description }}
-				</p>
+					<p class="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
+						{{ activeCategory.description }}
+					</p>
+				</div>
+
+				<NuxtLink
+					v-if="!hasClimatePrices"
+					to="/kontakti"
+					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+				>
+					Заявете оглед
+				</NuxtLink>
 			</div>
 
 			<div v-if="hasClimatePrices" class="overflow-x-auto">
@@ -285,15 +301,22 @@ useHead({
 					</tbody>
 				</table>
 			</div>
+		</section>
 
-			<div v-else class="grid gap-5 p-6 md:grid-cols-[1fr_auto] md:items-center">
-				<div class="max-w-3xl">
-					<p class="text-lg font-semibold text-slate-900">Цената се дава след оглед</p>
+		<template v-if="hasClimatePrices">
+			<p class="w-fit rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold">
+				Цените са без ДДС
+			</p>
 
-					<p class="mt-2 leading-7">
-						За тези дейности крайната стойност зависи от обема работа, достъпа, състоянието на
-						обекта, нужните материали и сроковете. След оглед подготвяме конкретна оферта според
-						реалните условия.
+			<section
+				class="mt-6 flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between"
+			>
+				<div class="max-w-2xl">
+					<h2 class="text-2xl font-semibold text-slate-900">Нужен е точен оглед?</h2>
+
+					<p class="mt-2">
+						При нестандартен достъп, по-големи машини или комбинирани дейности ще уточним крайната
+						стойност след разговор или оглед.
 					</p>
 				</div>
 
@@ -301,33 +324,9 @@ useHead({
 					to="/kontakti"
 					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
 				>
-					Заявете оглед
+					Свържете се с нас
 				</NuxtLink>
-			</div>
-		</section>
-
-		<p class="w-fit rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold">
-			Цените са без ДДС
-		</p>
-
-		<section
-			class="flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white shadow-sm p-6 mt-6 md:flex-row md:items-center md:justify-between"
-		>
-			<div class="max-w-2xl">
-				<h2 class="text-2xl font-semibold text-slate-900">Нужен е точен оглед?</h2>
-
-				<p class="mt-2">
-					При нестандартен достъп, по-големи машини или комбинирани дейности ще уточним крайната
-					стойност след разговор или оглед.
-				</p>
-			</div>
-
-			<NuxtLink
-				to="/kontakti"
-				class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
-			>
-				Свържете се с нас
-			</NuxtLink>
-		</section>
+			</section>
+		</template>
 	</main>
 </template>
