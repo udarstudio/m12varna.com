@@ -1,39 +1,39 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
-  css: ['~/assets/css/tailwind.css'],
-  site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://remonti-varna.bg',
-  },
-  sitemap: {
-    autoLastmod: true,
-    exclude: ['/404'],
-  },
-  nitro: {
-    preset: 'static',
-    prerender: {
-      routes: ['/404'],
-    },
-  },
-  app: {
-    head: {
-      script: [
-        {
-          defer: true,
-          src: 'https://cloud.umami.is/script.js',
-          'data-website-id': 'e21291f9-3954-403f-9b23-148b3ff42ed6',
-        },
-      ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'manifest', href: '/site.webmanifest' },
-      ],
-      meta: [
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#ffffff' },
-      ],
-    },
-  },
+	modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
+	css: ['~/assets/css/tailwind.css'],
+	site: {
+		url: process.env.NUXT_PUBLIC_SITE_URL || 'https://remonti-varna.bg',
+	},
+	sitemap: {
+		autoLastmod: true,
+		exclude: ['/404'],
+	},
+	nitro: {
+		preset: 'static',
+		prerender: {
+			routes: ['/404'],
+		},
+	},
+	app: {
+		head: {
+			script: [
+				{
+					defer: true,
+					src: 'https://cloud.umami.is/script.js',
+					'data-website-id': 'e21291f9-3954-403f-9b23-148b3ff42ed6',
+				},
+			],
+			link: [
+				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+				{ rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+				{ rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+				{ rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+				{ rel: 'manifest', href: '/site.webmanifest' },
+			],
+			meta: [
+				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{ name: 'theme-color', content: '#ffffff' },
+			],
+		},
+	},
 });
