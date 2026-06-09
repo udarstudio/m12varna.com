@@ -25,6 +25,33 @@ const galleryCategoryLabels: Record<string, string> = {
 };
 const galleryAltOverrides: Record<string, string> = {};
 
+function getBatchYear(filename: string) {
+	const match = filename.match(/-(\d{4})-/);
+
+	return match ? Number(match[1]) : 0;
+}
+
+function compareGalleryFilenames(a: string, b: string) {
+	const yearDifference = getBatchYear(b) - getBatchYear(a);
+
+	if (yearDifference !== 0) {
+		return yearDifference;
+	}
+
+	return a.localeCompare(b, 'en', { numeric: true });
+}
+
+function compareGalleryImages(a: GalleryImage, b: GalleryImage) {
+	const yearDifference =
+		getBatchYear(b.fullSrc.split('/').pop() || '') - getBatchYear(a.fullSrc.split('/').pop() || '');
+
+	if (yearDifference !== 0) {
+		return yearDifference;
+	}
+
+	return a.fullSrc.localeCompare(b.fullSrc, 'en', { numeric: true });
+}
+
 function normalizeSegment(value: string) {
 	return value
 		.normalize('NFKD')
@@ -67,7 +94,7 @@ async function getImageFilenames(dir: string) {
 			return imageExtensions.has(extension);
 		})
 		.map((entry) => entry.name)
-		.sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
+		.sort(compareGalleryFilenames);
 }
 
 export default defineEventHandler(async () => {
@@ -125,6 +152,6 @@ export default defineEventHandler(async () => {
 
 	return {
 		categories,
-		images: imagesByCategory.flat(),
+		images: imagesByCategory.flat().sort(compareGalleryImages),
 	};
 });
