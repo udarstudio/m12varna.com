@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import {
-	ArrowRightIcon,
-	PhoneIcon,
-} from '@heroicons/vue/24/solid';
+import { ArrowRightIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
@@ -54,32 +51,32 @@ const serviceCards = [
 	{
 		title: 'Монтаж и сервиз на климатици',
 		text: 'Доставка, монтаж, профилактика и поддръжка на климатични системи за жилища и търговски обекти.',
-		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-vanshno-tyalo-montazh-varna-01.jpg',
-		alt: 'Монтаж на външно тяло на климатик във Варна',
+		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-01.jpg',
+		alt: 'Монтиран вътрешен климатик в жилище във Варна',
 	},
 	{
 		title: 'Вентилационни системи',
 		text: 'Проектиране, изграждане и обслужване на вентилация за домове, офиси и работни пространства.',
-		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-trabi-fasada-sgrada-varna-07.jpg',
-		alt: 'Климатични и вентилационни тръби по фасада във Варна',
+		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-pompesen-vazel-kotelno-varna-04.jpg',
+		alt: 'Техническо помещение с изградени системи във Варна',
 	},
 	{
 		title: 'Цялостни и частични ремонти',
 		text: 'Довършителни работи, изолации, външни подобрения и координация на отделните етапи.',
-		image: '/galeria/thumbs/remonti/remonti-banya-s-dush-varna-01.jpg',
-		alt: 'Завършен ремонт на баня във Варна',
+		image: '/galeria/thumbs/remonti/remonti-2026-proekt-varna-04.jpg',
+		alt: 'Ремонтен проект във Варна',
 	},
 	{
-		title: 'Електро и ВиК услуги',
+		title: 'ВиК и електро услуги',
 		text: 'Изграждане, ремонт и поддръжка на електро и водопроводни инсталации.',
-		image: '/galeria/thumbs/vik/vik-vodoprovodni-trabi-varna-01.jpg',
-		alt: 'Водопроводни тръби при ВиК ремонт във Варна',
+		image: '/galeria/thumbs/vik/vik-shahta-za-pompa-varna-01.jpg',
+		alt: 'Шахта за водна помпа при ВиК инсталация във Варна',
 	},
 	{
 		title: 'Монтажи и логистика',
 		text: 'Монтаж на дограма и оборудване, транспорт на материали и извозване на отпадъци.',
-		image: '/galeria/thumbs/remonti/remonti-dvorna-vrata-montazh-varna-01.jpg',
-		alt: 'Монтаж на дворна врата във Варна',
+		image: '/galeria/thumbs/remonti/remonti-dvorna-vrata-s-darvena-oblicovka-varna-05.jpg',
+		alt: 'Монтирана дворна врата с дървена облицовка във Варна',
 	},
 ];
 const processSteps = [
@@ -200,23 +197,19 @@ useHead({
 				<div class="mt-6 max-w-3xl space-y-5 text-base leading-8 text-slate-700 md:text-lg">
 					<p>
 						Вашият надежден партньор в областта на климатизацията, вентилацията и
-						строително-ремонтните дейности във Варна и региона. С времето разширихме дейността
-						си, за да предлагаме цялостно управление и изпълнение на проекти.
+						строително-ремонтните дейности във Варна и региона. С времето разширихме дейността си,
+						за да предлагаме цялостно управление и изпълнение на проекти.
 					</p>
 
 					<p>
-						Поемаме отговорност за всеки етап - от планирането и инсталациите до
-						довършителните работи. Така клиентите получават качество, сигурност и спокойствие,
-						че инвестицията им е в надеждни ръце.
+						Поемаме отговорност за всеки етап - от планирането и инсталациите до довършителните
+						работи. Така клиентите получават качество, сигурност и спокойствие, че инвестицията им е
+						в надеждни ръце.
 					</p>
 				</div>
 
 				<ul class="mt-8 list-disc space-y-2 pl-5 text-base leading-7 text-slate-700">
-					<li
-						v-for="marker in trustMarkers"
-						:key="marker"
-						class="pl-1"
-					>
+					<li v-for="marker in trustMarkers" :key="marker" class="pl-1">
 						{{ marker }}
 					</li>
 				</ul>
@@ -226,7 +219,7 @@ useHead({
 		<section class="bg-slate-100 py-16 md:py-20">
 			<div class="mx-auto max-w-5xl px-6">
 				<div class="max-w-3xl">
-					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">
+					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
 						Специализирани сме в
 					</p>
 
@@ -244,7 +237,7 @@ useHead({
 						<img
 							:src="item.image"
 							:alt="item.alt"
-							class="h-48 w-full object-cover"
+							class="h-56 w-full object-cover md:h-60"
 							loading="lazy"
 						/>
 
@@ -258,7 +251,26 @@ useHead({
 			</div>
 		</section>
 
-		<section class="py-16 md:py-20">
+		<section class="bg-teal-700 py-14 text-white md:py-16">
+			<div
+				class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between"
+			>
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-white">Нашият принцип</p>
+
+					<p class="mt-3 text-3xl font-semibold leading-tight md:text-5xl">
+						Има ли желание - има и начин.
+					</p>
+
+					<p class="mt-5 max-w-2xl text-lg leading-8 text-teal-50">
+						Това е отношението, с което подхождаме към всеки проект, за да намерим работещо решение
+						и да удовлетворим Вашите изисквания.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-slate-100 py-16 md:py-20">
 			<div class="mx-auto max-w-5xl px-6">
 				<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
 					<div>
@@ -294,44 +306,26 @@ useHead({
 			</div>
 		</section>
 
-		<section class="bg-teal-600 py-14 text-white md:py-16">
-			<div class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between">
-				<div class="max-w-3xl">
-					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-100">
-						Нашият принцип
-					</p>
-
-					<p class="mt-3 text-3xl font-semibold leading-tight md:text-5xl">
-						Има ли желание - има и начин.
-					</p>
-
-					<p class="mt-5 max-w-2xl text-lg leading-8 text-teal-50">
-						Това е отношението, с което подхождаме към всеки проект, за да намерим работещо
-						решение и да удовлетворим Вашите изисквания.
-					</p>
-				</div>
-			</div>
-		</section>
-
 		<section class="py-16 text-slate-950 md:py-20">
-			<div class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between">
+			<div
+				class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between"
+			>
 				<div class="max-w-2xl">
 					<h2 class="text-3xl font-semibold leading-tight md:text-4xl">
-						Нуждаете се от климатизация или ремонт във Варна?
+						Планирате монтаж на климатик или ремонт във Варна?
 					</h2>
 
 					<p class="mt-4 text-lg leading-8 text-slate-600">
-						Обадете се за оглед, консултация и оферта според конкретния обект.
+						Обадете се за оглед, консултация и оферта.
 					</p>
 				</div>
 
-				<a
-					class="inline-flex w-fit items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
-					:href="`tel:${appConfig.phoneNumberRaw}`"
+				<NuxtLink
+					to="/kontakti"
+					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
 				>
-					<PhoneIcon class="h-5 w-5" />
-					Обадете ни се: {{ appConfig.phoneNumber }}
-				</a>
+					Свържете се с нас
+				</NuxtLink>
 			</div>
 		</section>
 	</main>
