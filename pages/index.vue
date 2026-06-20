@@ -43,7 +43,7 @@ const service = {
 const homeSchema = createSchemaGraph([website, localBusiness, homePage, service]);
 const heroImage = '/galeria/full/klimatizaciya/klimatizaciya-2026-proekt-varna-14.jpg';
 const trustMarkers = [
-	'14 години практически опит',
+	'14 години професионален опит',
 	'Варна и близките населени места',
 	'Климатизация, ремонти, ВиК и електро услуги',
 ];
@@ -57,8 +57,8 @@ const serviceCards = [
 	{
 		title: 'Вентилационни системи',
 		text: 'Проектиране, изграждане и обслужване на вентилация за домове, офиси и работни пространства.',
-		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-pompesen-vazel-kotelno-varna-04.jpg',
-		alt: 'Техническо помещение с изградени системи във Варна',
+		image: '/galeria/thumbs/ventilaciya/ventilaciya-proekt-varna-22.jpg',
+		alt: 'Изградена вентилационна система на обект във Варна',
 	},
 	{
 		title: 'Цялостни и частични ремонти',
@@ -191,7 +191,7 @@ useHead({
 				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">За нас</p>
 
 				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
-					Надежден партньор за климатизация и ремонти във Варна
+					Цялостно управление и изпълнение на проекти
 				</h2>
 
 				<div class="mt-6 max-w-3xl space-y-5 text-base leading-8 text-slate-700 md:text-lg">
@@ -272,26 +272,20 @@ useHead({
 
 		<section class="bg-slate-100 py-16 md:py-20">
 			<div class="mx-auto max-w-5xl px-6">
-				<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-					<div>
-						<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
-							Начин на работа
-						</p>
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+					Начин на работа
+				</p>
 
-						<h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
-							Ясен процес от първия разговор до готовия обект
-						</h2>
-					</div>
+				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
+					Ясен процес от първия разговор до готовия обект
+				</h2>
 
-					<div class="grid gap-4 sm:grid-cols-2">
-						<article
-							v-for="(step, index) in processSteps"
-							:key="step.title"
-							class="rounded-lg border border-slate-200 bg-slate-50 p-5"
-						>
+				<div class="mt-10 flex flex-col">
+					<template v-for="(step, index) in processSteps" :key="step.title">
+						<article class="rounded-lg border border-slate-200 bg-slate-50 p-5">
 							<div class="flex items-center gap-3">
 								<span
-									class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white"
+									class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white"
 								>
 									{{ index + 1 }}
 								</span>
@@ -301,7 +295,17 @@ useHead({
 
 							<p class="mt-4 leading-7 text-slate-600">{{ step.text }}</p>
 						</article>
-					</div>
+
+						<div
+							v-if="index < processSteps.length - 1"
+							class="flex justify-center py-1.5 text-slate-400"
+							aria-hidden="true"
+						>
+							<span class="flex h-6 w-6 items-center justify-center">
+								<ArrowRightIcon class="h-5 w-5 rotate-90" />
+							</span>
+						</div>
+					</template>
 				</div>
 			</div>
 		</section>

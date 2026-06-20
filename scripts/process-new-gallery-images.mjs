@@ -6,27 +6,45 @@ import { imageSize } from 'image-size';
 import { readFileSync } from 'node:fs';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const sourceRoot = path.join(rootDir, 'for galery');
 const fullRoot = path.join(rootDir, 'public', 'galeria', 'full');
 const thumbsRoot = path.join(rootDir, 'public', 'galeria', 'thumbs');
 
 const batches = [
 	{
-		sourceDir: 'klimatizaciq',
+		sourceDir: path.join('for galery', 'klimatizaciq'),
 		categoryId: 'klimatizaciya',
 		filenameBase: 'klimatizaciya-2026-proekt-varna',
 	},
 	{
-		sourceDir: 'remonti',
+		sourceDir: path.join('for galery', 'remonti'),
 		categoryId: 'remonti',
 		filenameBase: 'remonti-2026-proekt-varna',
+	},
+	{
+		sourceDir: 'ventilaciq-new',
+		categoryId: 'ventilaciya',
+		filenameBase: 'ventilaciya-proekt-varna',
 	},
 ];
 
 function parseArgs(argv) {
-	return {
-		dryRun: argv.includes('--dry-run'),
+	const args = {
+		categoryId: '',
+		dryRun: false,
 	};
+
+	for (let i = 0; i < argv.length; i += 1) {
+		const arg = argv[i];
+
+		if (arg === '--dry-run') {
+			args.dryRun = true;
+		} else if (arg === '--category') {
+			args.categoryId = argv[i + 1] || '';
+			i += 1;
+		}
+	}
+
+	return args;
 }
 
 function compareNumberedFilenames(a, b) {
@@ -98,11 +116,18 @@ async function processImage(sourcePath, fullDest, thumbDest) {
 }
 
 async function main() {
-	const { dryRun } = parseArgs(process.argv.slice(2));
+	const { categoryId, dryRun } = parseArgs(process.argv.slice(2));
+	const selectedBatches = categoryId
+		? batches.filter((batch) => batch.categoryId === categoryId)
+		: batches;
 	const operations = [];
 
-	for (const batch of batches) {
-		const sourceDir = path.join(sourceRoot, batch.sourceDir);
+	if (categoryId && selectedBatches.length === 0) {
+		throw new Error(`Unknown gallery category: ${categoryId}`);
+	}
+
+	for (const batch of selectedBatches) {
+		const sourceDir = path.join(rootDir, batch.sourceDir);
 		const fullDir = path.join(fullRoot, batch.categoryId);
 		const thumbsDir = path.join(thumbsRoot, batch.categoryId);
 		const sourceFiles = await getSourceFiles(sourceDir);
@@ -138,7 +163,7 @@ async function main() {
 		return;
 	}
 
-	for (const batch of batches) {
+	for (const batch of selectedBatches) {
 		await mkdir(path.join(fullRoot, batch.categoryId), { recursive: true });
 		await mkdir(path.join(thumbsRoot, batch.categoryId), { recursive: true });
 	}
