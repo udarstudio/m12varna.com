@@ -20,9 +20,11 @@ type GalleryImage = {
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 const galleryCategoryLabels: Record<string, string> = {
 	klimatizaciya: 'Климатизация',
-	remonti: 'Ремонти',
+	ventilaciya: 'Вентилация',
 	vik: 'ВиК',
+	remonti: 'Ремонти',
 };
+const galleryCategoryOrder = ['klimatizaciya', 'ventilaciya', 'vik', 'remonti'];
 const galleryAltOverrides: Record<string, string> = {};
 
 function getBatchYear(filename: string) {
@@ -77,8 +79,7 @@ async function getCategoryDirectories(baseDir: string) {
 
 	return entries
 		.filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
-		.map((entry) => entry.name)
-		.sort((a, b) => a.localeCompare(b, 'bg', { numeric: true }));
+		.map((entry) => entry.name);
 }
 
 async function getImageFilenames(dir: string) {
@@ -102,7 +103,10 @@ export default defineEventHandler(async () => {
 	const thumbsRoot = join(galleryRoot, 'thumbs');
 	const fullRoot = join(galleryRoot, 'full');
 
-	const categoryIds = await getCategoryDirectories(thumbsRoot);
+	const availableCategoryIds = await getCategoryDirectories(thumbsRoot);
+	const categoryIds = galleryCategoryOrder.filter((categoryId) =>
+		availableCategoryIds.includes(categoryId)
+	);
 	const categories: GalleryCategory[] = [
 		{ id: 'all', label: 'Всички' },
 		...categoryIds.map((categoryId) => ({

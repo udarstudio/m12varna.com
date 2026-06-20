@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PhoneIcon } from '@heroicons/vue/24/solid';
+import { ArrowRightIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
 const siteConfig = useSiteConfig();
@@ -41,6 +41,62 @@ const service = {
 	},
 };
 const homeSchema = createSchemaGraph([website, localBusiness, homePage, service]);
+const heroImage = '/galeria/full/klimatizaciya/klimatizaciya-2026-proekt-varna-14.jpg';
+const trustMarkers = [
+	'14 години професионален опит',
+	'Варна и близките населени места',
+	'Климатизация, ремонти, ВиК и електро услуги',
+];
+const serviceCards = [
+	{
+		title: 'Монтаж и сервиз на климатици',
+		text: 'Доставка, монтаж, профилактика и поддръжка на климатични системи за жилища и търговски обекти.',
+		image: '/galeria/thumbs/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-01.jpg',
+		alt: 'Монтиран вътрешен климатик в жилище във Варна',
+	},
+	{
+		title: 'Вентилационни системи',
+		text: 'Проектиране, изграждане и обслужване на вентилация за домове, офиси и работни пространства.',
+		image: '/galeria/thumbs/ventilaciya/ventilaciya-proekt-varna-22.jpg',
+		alt: 'Изградена вентилационна система на обект във Варна',
+	},
+	{
+		title: 'Цялостни и частични ремонти',
+		text: 'Довършителни работи, изолации, външни подобрения и координация на отделните етапи.',
+		image: '/galeria/thumbs/remonti/remonti-2026-proekt-varna-04.jpg',
+		alt: 'Ремонтен проект във Варна',
+	},
+	{
+		title: 'ВиК и електро услуги',
+		text: 'Изграждане, ремонт и поддръжка на електро и водопроводни инсталации.',
+		image: '/galeria/thumbs/vik/vik-shahta-za-pompa-varna-01.jpg',
+		alt: 'Шахта за водна помпа при ВиК инсталация във Варна',
+	},
+	{
+		title: 'Монтажи и логистика',
+		text: 'Монтаж на дограма и оборудване, транспорт на материали и извозване на отпадъци.',
+		image: '/galeria/thumbs/remonti/remonti-dvorna-vrata-s-darvena-oblicovka-varna-05.jpg',
+		alt: 'Монтирана дворна врата с дървена облицовка във Варна',
+	},
+];
+const processSteps = [
+	{
+		title: 'Оглед',
+		text: 'Запознаваме се с обекта, условията и желания резултат.',
+	},
+	{
+		title: 'Оферта',
+		text: 'Предлагаме ясен обхват, подходящи решения и последователност на работа.',
+	},
+	{
+		title: 'Изпълнение',
+		text: 'Поемаме организацията и работим с внимание към детайла.',
+	},
+	{
+		title: 'Завършване',
+		text: 'Предаваме обекта готов за ползване и съдействаме при нужда.',
+	},
+];
 
 useHead({
 	title: seoTitle,
@@ -81,83 +137,200 @@ useHead({
 </script>
 
 <template>
-	<main class="mx-auto flex max-w-5xl flex-col gap-6 px-6 py-16 text-gray-700">
-		<h1 class="text-3xl md:text-5xl font-semibold leading-tight">
-			Климатизация и ремонти във Варна
-		</h1>
+	<main class="text-slate-800">
+		<section class="relative isolate min-h-[620px] overflow-hidden bg-slate-950 text-white">
+			<img
+				:src="heroImage"
+				alt="Монтаж на климатична инсталация във Варна"
+				class="absolute inset-0 -z-20 h-full w-full object-cover"
+				fetchpriority="high"
+			/>
 
-		<h2 class="text-xl md:text-2xl">
-			<strong>{{ appConfig.siteName }}</strong> - 14 години опит, доверие и професионализъм в
-			сферата на климатизацията и ремонтните дейности във Варна.
-		</h2>
+			<div class="absolute inset-0 -z-10 bg-slate-950/70"></div>
 
-		<p>
-			Вашият надежден партньор в областта на климатизацията, вентилацията и строително-ремонтните
-			дейности във Варна и региона. В отговор на динамичния пазар и нуждите на нашите клиенти, с
-			времето разширихме дейността си. Днес предлагаме цялостно управление и изпълнение на проекти -
-			от строително-ремонтни дейности, през вътрешно обзавеждане, до външни мазилки, изолации и
-			довършителни работи за напълно завършена визия.
-		</p>
+			<div class="absolute inset-x-0 bottom-0 -z-10 h-44 bg-gradient-to-t from-slate-950/90"></div>
 
-		<p>
-			Ние поемаме пълната отговорност за всеки етап от проекта, като гарантираме правилното
-			функциониране на изградените системи и инсталации до окончателното завършване на обекта. С нас
-			клиентите получават качество, сигурност и спокойствие - увереност, че са направили правилния
-			избор и че инвестицията им е в надеждни ръце. Работим на територията на град Варна и близките
-			населени места, като поемаме проекти в цялата страна по договорка.
-		</p>
+			<div class="mx-auto flex min-h-[620px] max-w-5xl items-end px-6 py-16 md:py-20">
+				<div class="max-w-3xl">
+					<p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">
+						{{ appConfig.legalName }} - Варна
+					</p>
 
-		<div>
-			<p class="font-semibold mb-4">Специализирани сме в:</p>
+					<h1 class="text-4xl font-semibold leading-tight text-white md:text-5xl">
+						Климатизация и ремонти във Варна
+					</h1>
 
-			<ul class="list-disc space-y-2 pl-5">
-				<li>
-					<strong>Монтаж и сервиз на климатици във Варна</strong> - доставка, монтаж, профилактика и
-					поддръжка на климатични системи за жилища и търговски обекти.
-				</li>
+					<p class="mt-6 max-w-2xl text-lg leading-8 text-slate-100 md:text-2xl md:leading-9">
+						14 години опит, доверие и професионализъм в климатизацията, вентилацията и
+						строително-ремонтните дейности.
+					</p>
 
-				<li>
-					<strong>Вентилационни системи</strong> - проектиране, изграждане и обслужване на
-					вентилация за домове, офиси и обекти.
-				</li>
+					<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+						<a
+							class="inline-flex items-center justify-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-black/20 transition hover:bg-teal-300"
+							:href="`tel:${appConfig.phoneNumberRaw}`"
+						>
+							<PhoneIcon class="h-5 w-5" />
+							{{ appConfig.phoneNumber }}
+						</a>
 
-				<li>
-					<strong>Цялостни и частични ремонти</strong> - довършителни работи, изолации и външни
-					подобрения.
-				</li>
+						<NuxtLink
+							class="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-slate-950"
+							to="/galeria"
+						>
+							Вижте проекти
+							<ArrowRightIcon class="h-4 w-4" />
+						</NuxtLink>
+					</div>
+				</div>
+			</div>
+		</section>
 
-				<li>
-					<strong>Електро и ВиК услуги</strong> - изграждане и ремонт на електро и водопроводни
-					инсталации.
-				</li>
+		<section class="py-16 md:py-20">
+			<div class="mx-auto max-w-5xl px-6">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">За нас</p>
 
-				<li>
-					<strong>Монтажи и логистика</strong> - монтаж на дограма и оборудване, транспорт на
-					материали и извозване на отпадъци.
-				</li>
-			</ul>
-		</div>
+				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
+					Цялостно управление и изпълнение на проекти
+				</h2>
 
-		<p>
-			За нас доверието се гради на резултати, а успехът през годините се дължи на доволните ни
-			клиенти. Затова подхождаме към всеки проект с внимание към детайла и професионално отношение.
-		</p>
+				<div class="mt-6 max-w-3xl space-y-5 text-base leading-8 text-slate-700 md:text-lg">
+					<p>
+						Вашият надежден партньор в областта на климатизацията, вентилацията и
+						строително-ремонтните дейности във Варна и региона. С времето разширихме дейността си,
+						за да предлагаме цялостно управление и изпълнение на проекти.
+					</p>
 
-		<p>
-			<strong><i>“Има ли желание - има и начин.”</i></strong>
+					<p>
+						Поемаме отговорност за всеки етап - от планирането и инсталациите до довършителните
+						работи. Така клиентите получават качество, сигурност и спокойствие, че инвестицията им е
+						в надеждни ръце.
+					</p>
+				</div>
 
-			<br />
-			Това е принципът, който следваме във всеки проект, за да удовлетворим Вашите изисквания.
-		</p>
+				<ul class="mt-8 list-disc space-y-2 pl-5 text-base leading-7 text-slate-700">
+					<li v-for="marker in trustMarkers" :key="marker" class="pl-1">
+						{{ marker }}
+					</li>
+				</ul>
+			</div>
+		</section>
 
-		<div class="flex justify-center">
-			<a
-				class="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
-				:href="`tel:${appConfig.phoneNumberRaw}`"
+		<section class="bg-slate-100 py-16 md:py-20">
+			<div class="mx-auto max-w-5xl px-6">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+						Специализирани сме в
+					</p>
+
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
+						Услуги за дома, офиса и търговски обекти
+					</h2>
+				</div>
+
+				<div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+					<article
+						v-for="item in serviceCards"
+						:key="item.title"
+						class="overflow-hidden rounded-lg border border-slate-200 bg-slate-50 shadow-sm"
+					>
+						<img
+							:src="item.image"
+							:alt="item.alt"
+							class="h-56 w-full object-cover md:h-60"
+							loading="lazy"
+						/>
+
+						<div class="p-6">
+							<h3 class="text-xl font-semibold leading-7 text-slate-950">{{ item.title }}</h3>
+
+							<p class="mt-3 leading-7 text-slate-600">{{ item.text }}</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-teal-700 py-14 text-white md:py-16">
+			<div
+				class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between"
 			>
-				<PhoneIcon class="h-4 w-4" />
-				Обадете ни се: {{ appConfig.phoneNumber }}
-			</a>
-		</div>
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-white">Нашият принцип</p>
+
+					<p class="mt-3 text-3xl font-semibold leading-tight md:text-5xl">
+						Има ли желание - има и начин.
+					</p>
+
+					<p class="mt-5 max-w-2xl text-lg leading-8 text-teal-50">
+						Това е отношението, с което подхождаме към всеки проект, за да намерим работещо решение
+						и да удовлетворим Вашите изисквания.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-slate-100 py-16 md:py-20">
+			<div class="mx-auto max-w-5xl px-6">
+				<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+					Начин на работа
+				</p>
+
+				<h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
+					Ясен процес от първия разговор до готовия обект
+				</h2>
+
+				<div class="mt-10 flex flex-col">
+					<template v-for="(step, index) in processSteps" :key="step.title">
+						<article class="rounded-lg border border-slate-200 bg-slate-50 p-5">
+							<div class="flex items-center gap-3">
+								<span
+									class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-white"
+								>
+									{{ index + 1 }}
+								</span>
+
+								<h3 class="text-lg font-semibold text-slate-950">{{ step.title }}</h3>
+							</div>
+
+							<p class="mt-4 leading-7 text-slate-600">{{ step.text }}</p>
+						</article>
+
+						<div
+							v-if="index < processSteps.length - 1"
+							class="flex justify-center py-1.5 text-slate-400"
+							aria-hidden="true"
+						>
+							<span class="flex h-6 w-6 items-center justify-center">
+								<ArrowRightIcon class="h-5 w-5 rotate-90" />
+							</span>
+						</div>
+					</template>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-16 text-slate-950 md:py-20">
+			<div
+				class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between"
+			>
+				<div class="max-w-2xl">
+					<h2 class="text-3xl font-semibold leading-tight md:text-4xl">
+						Планирате монтаж на климатик или ремонт във Варна?
+					</h2>
+
+					<p class="mt-4 text-lg leading-8 text-slate-600">
+						Обадете се за оглед, консултация и оферта.
+					</p>
+				</div>
+
+				<NuxtLink
+					to="/kontakti"
+					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+				>
+					Свържете се с нас
+				</NuxtLink>
+			</div>
+		</section>
 	</main>
 </template>
