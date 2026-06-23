@@ -34,14 +34,19 @@
 						{{ appConfig.phoneNumber }}
 					</a>
 
-					<a
+					<ClientEmailLink
 						class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
-						:href="`mailto:${appConfig.email}`"
 					>
 						<EnvelopeIcon class="h-4 w-4" />
 
 						{{ appConfig.email }}
-					</a>
+
+						<template #fallback>
+							<EnvelopeIcon class="h-4 w-4" />
+
+							Имейл
+						</template>
+					</ClientEmailLink>
 
 					<a
 						class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"

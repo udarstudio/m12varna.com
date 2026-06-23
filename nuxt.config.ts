@@ -16,6 +16,9 @@ export default defineNuxtConfig({
 	},
 	app: {
 		head: {
+			htmlAttrs: {
+				lang: 'bg',
+			},
 			script: [
 				{
 					defer: true,
