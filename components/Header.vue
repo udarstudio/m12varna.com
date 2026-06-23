@@ -24,13 +24,17 @@
 					{{ appConfig.phoneNumber }}
 				</a>
 
-				<a
+				<ClientEmailLink
 					class="hidden items-center gap-1 p-2 font-semibold tracking-wide text-white transition hover:text-gray-300 md:flex"
-					:href="`mailto:${appConfig.email}`"
 				>
 					<EnvelopeIcon class="h-3 w-3" />
 					{{ appConfig.email }}
-				</a>
+
+					<template #fallback>
+						<EnvelopeIcon class="h-3 w-3" />
+						Имейл
+					</template>
+				</ClientEmailLink>
 			</div>
 
 			<nav class="site-header__nav" :class="{ 'site-header__nav--open': isMenuOpen }">

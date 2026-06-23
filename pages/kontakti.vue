@@ -242,12 +242,13 @@ useHead({
 
 					<p>
 						Имейл:
-						<a
+						<ClientEmailLink
 							class="font-semibold text-slate-900 transition hover:text-teal-700"
-							:href="`mailto:${appConfig.email}`"
 						>
 							{{ appConfig.email }}
-						</a>
+
+							<template #fallback>контакт</template>
+						</ClientEmailLink>
 					</p>
 
 					<p>
