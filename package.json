@@ -9,6 +9,7 @@
 		"generate": "nuxt generate",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"indexnow": "node scripts/submit-indexnow.mjs",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare"
 	},
