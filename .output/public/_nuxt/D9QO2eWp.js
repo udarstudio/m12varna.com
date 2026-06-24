@@ -1,1 +1,0 @@
-import{T as a,K as i,p as o,U as r}from"./CnEZ_Eog.js";function n(s){const t=i({});return a(()=>{const e=o().$nuxtSiteConfig.get(r({resolveRefs:!0},s));t&&e&&Object.assign(t,e)}),delete t._priority,t}export{n as u};
