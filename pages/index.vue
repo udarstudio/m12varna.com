@@ -97,6 +97,13 @@ const processSteps = [
 		text: 'Предаваме обекта готов за ползване и съдействаме при нужда.',
 	},
 ];
+const featuredArticle = {
+	title: '5 основни причини климатикът да не духа топло',
+	text: 'Проверете най-честите причини - режим на работа, дефрост, филтри, фреон и външно тяло.',
+	url: '/klimatik-ne-duha-toplo',
+	image: '/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-03.jpg',
+	alt: 'Профилактика на вътрешно тяло на климатик във Варна',
+};
 
 useHead({
 	title: seoTitle,
@@ -307,6 +314,53 @@ useHead({
 						</div>
 					</template>
 				</div>
+			</div>
+		</section>
+
+		<section class="py-16 md:py-20">
+			<div class="mx-auto max-w-5xl px-6">
+				<div class="max-w-3xl">
+					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+						Полезно от нас
+					</p>
+
+					<h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
+						Практични съвети за поддръжка и ремонт
+					</h2>
+				</div>
+
+				<NuxtLink
+					:to="featuredArticle.url"
+					class="mt-10 grid overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-teal-500 hover:shadow-lg md:grid-cols-[0.9fr_1.1fr]"
+				>
+					<img
+						:src="featuredArticle.image"
+						:alt="featuredArticle.alt"
+						class="h-64 w-full object-cover md:h-full"
+						loading="lazy"
+					/>
+
+					<div class="flex flex-col justify-center p-6 md:p-8">
+						<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
+							Климатизация
+						</p>
+
+						<h3 class="mt-3 text-2xl font-semibold leading-tight text-slate-950 md:text-3xl">
+							{{ featuredArticle.title }}
+						</h3>
+
+						<p class="mt-4 text-base leading-7 text-slate-600 md:text-lg">
+							{{ featuredArticle.text }}
+						</p>
+
+						<span
+							class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-950"
+						>
+							Прочетете статията
+							<ArrowRightIcon class="h-4 w-4" />
+						</span>
+					</div>
+				</NuxtLink>
 			</div>
 		</section>
 
