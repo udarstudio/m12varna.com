@@ -14,6 +14,14 @@ export default defineNuxtConfig({
 			routes: ['/404'],
 		},
 	},
+	routeRules: {
+		'/klimatik-ne-duha-toplo': {
+			redirect: {
+				to: '/blog/klimatik-ne-duha-toplo',
+				statusCode: 301,
+			},
+		},
+	},
 	app: {
 		head: {
 			htmlAttrs: {
