@@ -101,8 +101,8 @@ const featuredArticle = {
 	title: '5 основни причини климатикът да не духа топло',
 	text: 'Проверете най-честите причини - режим на работа, дефрост, филтри, фреон и външно тяло.',
 	url: '/klimatik-ne-duha-toplo',
-	image: '/galeria/thumbs/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-03.jpg',
-	alt: 'Профилактика на вътрешно тяло на климатик във Варна',
+	image: '/galeria/thumbs/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-04.jpg',
+	alt: 'Монтиран вътрешен климатик в жилище във Варна',
 };
 
 useHead({
@@ -153,9 +153,7 @@ useHead({
 				fetchpriority="high"
 			/>
 
-			<div class="absolute inset-0 -z-10 bg-slate-950/70"></div>
-
-			<div class="absolute inset-x-0 bottom-0 -z-10 h-44 bg-gradient-to-t from-slate-950/90"></div>
+			<div class="absolute inset-0 -z-10 bg-black/75"></div>
 
 			<div class="mx-auto flex min-h-[620px] max-w-5xl items-end px-6 py-16 md:py-20">
 				<div class="max-w-3xl">
@@ -321,7 +319,7 @@ useHead({
 			<div class="mx-auto max-w-5xl px-6">
 				<div class="max-w-3xl">
 					<p class="text-sm font-semibold uppercase tracking-[0.16em] text-teal-700">
-						Полезно от нас
+						Полезно
 					</p>
 
 					<h2 class="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-4xl">
@@ -364,7 +362,7 @@ useHead({
 			</div>
 		</section>
 
-		<section class="py-16 text-slate-950 md:py-20">
+		<section class="bg-slate-100 py-16 text-slate-950 md:py-20">
 			<div
 				class="mx-auto flex max-w-5xl flex-col gap-8 px-6 md:flex-row md:items-center md:justify-between"
 			>
@@ -380,7 +378,7 @@ useHead({
 
 				<NuxtLink
 					to="/kontakti"
-					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+					class="inline-flex w-fit shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
 				>
 					Свържете се с нас
 				</NuxtLink>

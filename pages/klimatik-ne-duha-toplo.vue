@@ -7,12 +7,12 @@ const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
 const siteUrl = siteConfig.url || 'https://remonti-varna.bg';
 const articlePath = '/klimatik-ne-duha-toplo';
 const articleUrl = `${siteUrl}${articlePath}`;
-const articleImage = `${siteUrl}/galeria/full/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-03.jpg`;
+const articleImage = `${siteUrl}/galeria/full/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-04.jpg`;
 const seoTitle = `Климатикът не духа топло - 5 причини и решения | Варна`;
 const seoDescription =
 	'Научете защо климатикът във Варна не топли и как да го поправите. Профилактика, зареждане с фреон и експертни съвети.';
-const publishedDate = '2026-06-29';
-const modifiedDate = '2026-06-29';
+const publishedDate = '2026-07-29';
+const modifiedDate = '2026-07-29';
 const articleWebPage = {
 	'@type': 'WebPage',
 	'@id': `${articleUrl}#webpage`,
@@ -100,15 +100,13 @@ useHead({
 	<main class="text-slate-800">
 		<section class="relative isolate overflow-hidden bg-slate-950 text-white">
 			<img
-				src="/galeria/full/klimatizaciya/klimatizaciya-serviz-vatreshno-tyalo-varna-03.jpg"
-				alt="Профилактика на вътрешно тяло на климатик във Варна"
+				src="/galeria/full/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-04.jpg"
+				alt="Монтиран вътрешен климатик в жилище във Варна"
 				class="absolute inset-0 -z-20 h-full w-full object-cover"
 				fetchpriority="high"
 			/>
 
-			<div class="absolute inset-0 -z-10 bg-slate-950/75"></div>
-
-			<div class="absolute inset-x-0 bottom-0 -z-10 h-36 bg-gradient-to-t from-slate-950"></div>
+			<div class="absolute inset-0 -z-10 bg-black/75"></div>
 
 			<div class="mx-auto flex min-h-[520px] max-w-5xl items-end px-6 py-16 md:py-20">
 				<div class="max-w-4xl">
@@ -134,7 +132,7 @@ useHead({
 						Варна и региона.
 					</p>
 
-					<p class="mt-6 text-sm font-semibold text-slate-300">Публикувано на 29.06.2026</p>
+					<p class="mt-6 text-sm font-semibold text-slate-300">Публикувано на 29.07.2026</p>
 				</div>
 			</div>
 		</section>
@@ -302,7 +300,7 @@ useHead({
 					</p>
 				</section>
 
-				<section class="rounded-lg bg-slate-950 p-6 text-white md:p-8">
+				<section class="rounded-lg bg-black p-6 text-white md:p-8">
 					<h2 class="text-2xl font-semibold leading-tight">
 						Нужда от ремонт или профилактика на климатик във Варна?
 					</h2>
