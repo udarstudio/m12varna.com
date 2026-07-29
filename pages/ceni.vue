@@ -268,7 +268,7 @@ useHead({
 
 			<div v-if="hasClimatePrices" class="overflow-x-auto">
 				<table class="min-w-[860px] divide-y divide-gray-200 text-left">
-					<thead class="bg-slate-900 text-xs uppercase tracking-[0.12em] text-white">
+					<thead class="bg-black text-xs uppercase tracking-[0.12em] text-white">
 						<tr>
 							<th scope="col" class="w-[36%] px-5 py-4 font-semibold">Услуга</th>
 
