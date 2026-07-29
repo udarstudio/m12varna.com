@@ -100,7 +100,7 @@ const processSteps = [
 const featuredArticle = {
 	title: '5 основни причини климатикът да не духа топло',
 	text: 'Проверете най-честите причини - режим на работа, дефрост, филтри, фреон и външно тяло.',
-	url: '/klimatik-ne-duha-toplo',
+	url: '/blog/klimatik-ne-duha-toplo',
 	image: '/galeria/thumbs/klimatizaciya/klimatizaciya-vatreshno-tyalo-stena-varna-04.jpg',
 	alt: 'Монтиран вътрешен климатик в жилище във Варна',
 };
