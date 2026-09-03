@@ -14,11 +14,12 @@
 			</NuxtLink>
 
 			<div
-				class="relative site-header__bar gap-5 bg-black px-6 flex items-center justify-end text-xs text-white"
+				class="relative site-header__bar gap-6 bg-black px-6 flex items-center justify-end text-xs text-white"
 			>
 				<a
 					class="flex items-center gap-1 p-2 font-semibold tracking-wide text-white transition hover:text-gray-300"
 					:href="`tel:${appConfig.phoneNumberRaw}`"
+					@click="trackEvent('phone_click', { link_location: 'header' })"
 				>
 					<PhoneIcon class="h-3 w-3" />
 					{{ appConfig.phoneNumber }}
@@ -26,6 +27,7 @@
 
 				<ClientEmailLink
 					class="hidden items-center gap-1 p-2 font-semibold tracking-wide text-white transition hover:text-gray-300 md:flex"
+					tracking-location="header"
 				>
 					<EnvelopeIcon class="h-3 w-3" />
 					{{ appConfig.email }}
@@ -103,6 +105,7 @@ const headerElement = ref<HTMLElement | null>(null);
 let originalBodyOverflow = '';
 const appConfig = useAppConfig();
 const { navItems } = useNavigation();
+const { trackEvent } = useGoogleAnalytics();
 
 function closeMenuOnOutsideClick(event: PointerEvent) {
 	if (!isMenuOpen.value || headerElement.value?.contains(event.target as Node)) {

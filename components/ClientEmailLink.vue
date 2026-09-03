@@ -1,6 +1,6 @@
 <template>
 	<ClientOnly>
-		<a :href="`mailto:${appConfig.email}`" v-bind="attrs">
+		<a :href="`mailto:${appConfig.email}`" v-bind="attrs" @click="trackEmailClick">
 			<slot>{{ appConfig.email }}</slot>
 		</a>
 
@@ -17,17 +17,20 @@ defineOptions({
 	inheritAttrs: false,
 });
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		fallbackText?: string;
+		trackingLocation?: string;
 	}>(),
 	{
 		fallbackText: 'Имейл',
+		trackingLocation: 'site',
 	}
 );
 
 const appConfig = useAppConfig();
 const attrs = useAttrs();
+const { trackEvent } = useGoogleAnalytics();
 const fallbackAttrs = computed(() => {
 	const safeAttrs = { ...attrs };
 
@@ -37,4 +40,8 @@ const fallbackAttrs = computed(() => {
 
 	return safeAttrs;
 });
+
+function trackEmailClick() {
+	trackEvent('email_click', { link_location: props.trackingLocation });
+}
 </script>

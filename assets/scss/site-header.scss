@@ -1,7 +1,7 @@
 .site-header {
 	position: relative;
 	z-index: 30;
-	background: linear-gradient(to bottom, #b8bcbc, #ecefef);
+	background: linear-gradient(to bottom, var(--color-gray-300), var(--color-gray-100));
 	box-shadow: 0 4px 14px rgba(15, 23, 42, 0.16);
 
 	&__inner {
@@ -51,7 +51,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		background: linear-gradient(to bottom, #b8bcbc, #ecefef);
+		background: linear-gradient(to bottom, var(--color-gray-300), var(--color-gray-100));
 	}
 
 	&__menu-button {
@@ -60,10 +60,10 @@
 		justify-content: center;
 		width: 2.75rem;
 		height: 2.75rem;
-		border: 1px solid #cbd5e1;
+		border: 1px solid var(--color-gray-300);
 		border-radius: 0.5rem;
 		background-color: rgba(255, 255, 255, 0.85);
-		color: #1e293b;
+		color: #1f2937;
 		box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
 		transition:
 			background-color 160ms ease,
@@ -74,7 +74,7 @@
 		&:hover {
 			border-color: #6b7280;
 			background-color: #ffffff;
-			color: #020617;
+			color: #000000;
 		}
 
 		&:focus {
@@ -86,7 +86,7 @@
 	&__nav--open &__menu-button {
 		border-color: #6b7280;
 		background-color: #ffffff;
-		color: #020617;
+		color: #000000;
 		box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
 	}
 
@@ -108,8 +108,8 @@
 		flex-direction: column;
 		padding: 1rem 0 0.25rem;
 		border-bottom: 1px solid #d6e2e2;
-		background-color: #ecefef;
-		color: #1e293b;
+		background-color: var(--color-gray-100);
+		color: #1f2937;
 		font-weight: 600;
 		box-shadow: 0 15px 10px transparent;
 		pointer-events: none;
@@ -131,7 +131,7 @@
 	&__nav-link {
 		display: block;
 		padding: 0.75rem 1.5rem;
-		color: #1e293b;
+		color: #1f2937;
 		transition: color 160ms ease;
 
 		li:not(:last-child) & {

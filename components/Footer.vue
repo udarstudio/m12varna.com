@@ -28,6 +28,7 @@
 					<a
 						class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
 						:href="`tel:${appConfig.phoneNumberRaw}`"
+						@click="trackEvent('phone_click', { link_location: 'footer' })"
 					>
 						<PhoneIcon class="h-4 w-4" />
 
@@ -36,6 +37,7 @@
 
 					<ClientEmailLink
 						class="flex w-fit items-center gap-2 text-white transition hover:text-gray-300"
+						tracking-location="footer"
 					>
 						<EnvelopeIcon class="h-4 w-4" />
 
@@ -81,10 +83,31 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-gray-400">
-				<span>© 2026 {{ appConfig.siteName }}. Всички права запазени.</span>
+			<div
+				class="flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-gray-400 md:flex-row md:items-center md:justify-between"
+			>
+				<div class="flex flex-col gap-2">
+					<span>© 2026 {{ appConfig.siteName }}. Всички права запазени.</span>
 
-				<span>Официален изпълнител: Мани 12 ЕООД</span>
+					<span>Официален изпълнител: Мани 12 ЕООД</span>
+				</div>
+
+				<div class="flex flex-wrap gap-x-6 gap-y-2">
+					<NuxtLink
+						to="/politika-za-poveritelnost"
+						class="text-white transition hover:text-gray-300"
+					>
+						Поверителност и бисквитки
+					</NuxtLink>
+
+					<button
+						type="button"
+						class="text-left text-white transition hover:text-gray-300"
+						@click="openSettings"
+					>
+						Настройки за бисквитки
+					</button>
+				</div>
 			</div>
 		</div>
 	</footer>
@@ -95,4 +118,6 @@ import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/solid';
 
 const appConfig = useAppConfig();
 const { navItems } = useNavigation();
+const { openSettings } = useConsent();
+const { trackEvent } = useGoogleAnalytics();
 </script>

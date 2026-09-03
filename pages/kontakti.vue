@@ -5,6 +5,7 @@ const { createSchemaGraph, ids, localBusiness, website } = useStructuredData();
 const isSubmitting = ref(false);
 const submitState = ref<'idle' | 'success' | 'error'>('idle');
 const submitMessage = ref('');
+const { trackEvent } = useGoogleAnalytics();
 const seoTitle = `Контакти | ${appConfig.siteName}`;
 const seoDescription =
 	'Свържете се с Мани 12 ЕООД за климатизация, вентилация и ремонтни дейности във Варна. Обадете се или изпратете запитване по имейл.';
@@ -70,6 +71,7 @@ async function submitContactForm(event: Event) {
 		form.reset();
 		submitState.value = 'success';
 		submitMessage.value = 'Запитването беше изпратено успешно.';
+		trackEvent('generate_lead', { form_name: 'contact_form' });
 	} catch (error) {
 		submitState.value = 'error';
 		submitMessage.value =
@@ -102,7 +104,7 @@ useHead({
 <template>
 	<main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16 text-gray-700">
 		<div class="flex flex-col gap-4">
-			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Контакти</h1>
+			<h1 class="text-3xl font-semibold leading-tight text-black md:text-5xl">Контакти</h1>
 
 			<p class="max-w-3xl text-lg">
 				Свържете се с нас за оглед, консултация или оферта за климатизация, вентилация и
@@ -112,7 +114,7 @@ useHead({
 
 		<section class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
 			<div class="mb-6 flex flex-col gap-3">
-				<h2 class="text-2xl font-semibold text-slate-900">Изпратете запитване</h2>
+				<h2 class="text-2xl font-semibold text-black">Изпратете запитване</h2>
 
 				<p class="max-w-3xl">
 					Опишете накратко каква услуга ви е нужна и ще се свържем с вас възможно най-скоро.
@@ -132,7 +134,7 @@ useHead({
 							type="text"
 							name="name"
 							required
-							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 						/>
 					</label>
 
@@ -145,7 +147,7 @@ useHead({
 							type="tel"
 							name="phone"
 							required
-							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 						/>
 					</label>
 				</div>
@@ -160,7 +162,7 @@ useHead({
 							type="email"
 							name="email"
 							required
-							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 						/>
 					</label>
 
@@ -172,7 +174,7 @@ useHead({
 						<input
 							type="text"
 							name="subject"
-							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+							class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 						/>
 					</label>
 				</div>
@@ -186,9 +188,19 @@ useHead({
 						name="message"
 						required
 						rows="6"
-						class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-slate-900"
+						class="rounded-2xl border border-gray-300 px-4 py-3 outline-none transition focus:border-black"
 					></textarea>
 				</label>
+
+				<p class="text-sm leading-6 text-gray-500">
+					Използваме въведените данни само за отговор на запитването.
+					<NuxtLink
+						to="/politika-za-poveritelnost"
+						class="content-link"
+					>
+						Как обработваме данните Ви</NuxtLink
+					>
+				</p>
 
 				<div class="flex items-center gap-4 max-md:flex-col max-md:items-start">
 					<p
@@ -211,30 +223,28 @@ useHead({
 			</form>
 		</section>
 
-		<section class="grid gap-6 rounded-3xl bg-slate-50 md:grid-cols-[1.3fr_0.9fr]">
+		<section class="grid gap-6 rounded-3xl bg-gray-50 md:grid-cols-[1.3fr_0.9fr]">
 			<div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-				<iframe
-					class="h-[420px] w-full"
+				<ConsentAwareGoogleMap
 					:src="mapsEmbedUrl"
 					title="Карта до офиса на Мани 12 ЕООД"
-					loading="lazy"
-					referrerpolicy="no-referrer-when-downgrade"
-				></iframe>
+				/>
 			</div>
 
 			<div
-				class="flex flex-col justify-between gap-5 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+				class="flex flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
 			>
 				<div class="flex flex-col gap-3">
-					<h2 class="text-2xl font-semibold text-slate-900">Адрес</h2>
+					<h2 class="text-2xl font-semibold text-black">Адрес</h2>
 
 					<p v-for="line in addressLines" :key="line">{{ line }}</p>
 
 					<p>
 						Телефон:
 						<a
-							class="font-semibold text-slate-900 transition hover:text-teal-700"
+							class="content-link"
 							:href="`tel:${appConfig.phoneNumberRaw}`"
+							@click="trackEvent('phone_click', { link_location: 'contact_page' })"
 						>
 							{{ appConfig.phoneNumber }}
 						</a>
@@ -243,7 +253,8 @@ useHead({
 					<p>
 						Имейл:
 						<ClientEmailLink
-							class="font-semibold text-slate-900 transition hover:text-teal-700"
+							class="content-link"
+							tracking-location="contact_page"
 						>
 							{{ appConfig.email }}
 
@@ -258,10 +269,11 @@ useHead({
 				</div>
 
 				<a
-					class="inline-flex w-fit rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
+					class="inline-flex w-fit rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
 					:href="mapsDirectionsUrl"
 					target="_blank"
 					rel="noreferrer nofollow"
+					@click="trackEvent('map_link_click', { link_location: 'contact_page' })"
 				>
 					Отвори в Google Maps
 				</a>

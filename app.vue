@@ -1,11 +1,15 @@
 <template>
-	<div class="text-slate-900 min-h-screen overflow-x-hidden">
-		<div class="bg-slate-50">
+	<div class="text-black min-h-screen overflow-x-hidden">
+		<GoogleAnalytics />
+
+		<div class="bg-[var(--site-background-color)]">
 			<Header />
 
 			<NuxtPage />
 
 			<Footer />
 		</div>
+
+		<CookieConsent />
 	</div>
 </template>

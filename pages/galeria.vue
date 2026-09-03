@@ -154,7 +154,7 @@ async function openLightbox(startIndex: number) {
 <template>
 	<main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16 text-gray-700">
 		<section class="flex flex-col gap-4">
-			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Галерия</h1>
+			<h1 class="text-3xl font-semibold leading-tight text-black md:text-5xl">Галерия</h1>
 
 			<p class="max-w-3xl text-lg">
 				Разгледайте нашата галерия от завършени проекти в областта на климатизацията, ремонтните
@@ -171,9 +171,9 @@ async function openLightbox(startIndex: number) {
 					:class="
 						activeTab === category.id
 							? 'border-black bg-black text-white shadow-lg shadow-black/10'
-							: 'border-gray-200 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-700'
+							: 'border-gray-200 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700'
 					"
-					class="rounded-full border px-5 py-2.5 text-sm font-semibold transition"
+					class="rounded-full border px-6 py-2.5 text-sm font-semibold transition"
 					role="tab"
 					type="button"
 					@click="activeTab = category.id"
@@ -198,7 +198,7 @@ async function openLightbox(startIndex: number) {
 					class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-4"
 					@click.prevent="openLightbox(filteredImages.findIndex((entry) => entry.id === image.id))"
 				>
-					<figure class="overflow-hidden bg-slate-100">
+					<figure class="overflow-hidden bg-gray-100">
 						<img
 							:src="image.thumbSrc"
 							:alt="image.alt"
@@ -214,7 +214,7 @@ async function openLightbox(startIndex: number) {
 
 		<div v-if="hasMoreImages" class="flex justify-center">
 			<button
-				class="rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-teal-500 hover:text-teal-700"
+				class="rounded-full border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:border-teal-500 hover:text-teal-700"
 				type="button"
 				@click="showMoreImages"
 			>
