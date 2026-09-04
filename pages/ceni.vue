@@ -216,7 +216,7 @@ useHead({
 <template>
 	<main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16 text-gray-700">
 		<section class="flex flex-col gap-4">
-			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">Ценова листа</h1>
+			<h1 class="text-3xl font-semibold leading-tight text-black md:text-5xl">Ценова листа</h1>
 
 			<p class="max-w-3xl text-lg">
 				За климатични услуги публикуваме ориентировъчни цени. За останалите дейности цената се
@@ -231,11 +231,11 @@ useHead({
 					:key="category.id"
 					:aria-selected="activeCategoryId === category.id"
 					type="button"
-					class="rounded-full border px-5 py-2.5 text-sm font-semibold transition"
+					class="rounded-full border px-6 py-2.5 text-sm font-semibold transition"
 					:class="
 						activeCategoryId === category.id
 							? 'border-black bg-black text-white shadow-lg shadow-black/10'
-							: 'border-gray-200 bg-white text-slate-700 hover:border-teal-500 hover:text-teal-700'
+							: 'border-gray-200 bg-white text-gray-700 hover:border-teal-500 hover:text-teal-700'
 					"
 					role="tab"
 					@click="activeCategoryId = category.id"
@@ -247,10 +247,10 @@ useHead({
 
 		<section class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm">
 			<div
-				class="grid gap-5 border-b border-gray-200 px-5 py-4 md:grid-cols-[1fr_auto] md:items-center"
+				class="grid gap-6 border-b border-gray-200 px-6 py-4 md:grid-cols-[1fr_auto] md:items-center"
 			>
 				<div>
-					<h2 class="text-2xl font-semibold text-slate-900">{{ activeCategory.title }}</h2>
+					<h2 class="text-2xl font-semibold text-black">{{ activeCategory.title }}</h2>
 
 					<p class="mt-2 max-w-3xl text-sm leading-6 text-gray-600">
 						{{ activeCategory.description }}
@@ -270,31 +270,31 @@ useHead({
 				<table class="min-w-[860px] divide-y divide-gray-200 text-left">
 					<thead class="bg-black text-xs uppercase tracking-[0.12em] text-white">
 						<tr>
-							<th scope="col" class="w-[36%] px-5 py-4 font-semibold">Услуга</th>
+							<th scope="col" class="w-[36%] px-6 py-4 font-semibold">Услуга</th>
 
 							<th scope="col" class="w-[10%] px-4 py-4 text-center font-semibold">МЕ</th>
 
 							<th scope="col" class="w-[16%] px-4 py-4 text-right font-semibold">Цена</th>
 
-							<th scope="col" class="w-[38%] px-5 py-4 font-semibold">Забележка</th>
+							<th scope="col" class="w-[38%] px-6 py-4 font-semibold">Забележка</th>
 						</tr>
 					</thead>
 
 					<tbody class="divide-y divide-gray-100">
-						<tr v-for="item in prices" :key="item.service" class="transition hover:bg-slate-50">
-							<th scope="row" class="px-5 py-4 text-sm font-semibold text-slate-900">
+						<tr v-for="item in prices" :key="item.service" class="transition hover:bg-gray-50">
+							<th scope="row" class="px-6 py-4 text-sm font-semibold text-black">
 								{{ item.service }}
 							</th>
 
 							<td class="px-4 py-4 text-center text-sm text-gray-600">{{ item.unit }}</td>
 
 							<td
-								class="whitespace-nowrap px-4 py-4 text-right text-sm font-semibold text-slate-900"
+								class="whitespace-nowrap px-4 py-4 text-right text-sm font-semibold text-black"
 							>
 								{{ item.price }}
 							</td>
 
-							<td class="px-5 py-4 text-sm leading-6 text-gray-600">
+							<td class="px-6 py-4 text-sm leading-6 text-gray-600">
 								{{ item.note || '—' }}
 							</td>
 						</tr>
@@ -304,7 +304,7 @@ useHead({
 		</section>
 
 		<template v-if="hasClimatePrices">
-			<p class="w-fit rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold">
+			<p class="w-fit rounded-full border border-gray-200 px-4 py-2 text-sm font-semibold">
 				Цените са без ДДС
 			</p>
 
@@ -312,7 +312,7 @@ useHead({
 				class="mt-6 flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between"
 			>
 				<div class="max-w-2xl">
-					<h2 class="text-2xl font-semibold text-slate-900">Нужен е точен оглед?</h2>
+					<h2 class="text-2xl font-semibold text-black">Нужен е точен оглед?</h2>
 
 					<p class="mt-2">
 						При нестандартен достъп, по-големи машини или комбинирани дейности ще уточним крайната

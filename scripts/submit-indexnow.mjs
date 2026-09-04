@@ -4,9 +4,9 @@ import { fileURLToPath } from 'node:url';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(rootDir, 'public');
+const sitemapPath = path.join(rootDir, '.output', 'public', 'sitemap.xml');
 const defaultSiteUrl = 'https://remonti-varna.bg';
 const defaultEndpoint = 'https://api.indexnow.org/indexnow';
-const defaultPaths = ['/', '/ceni', '/galeria', '/partnyori', '/kontakti'];
 const keyPattern = /^[A-Za-z0-9-]{8,128}$/;
 
 function parseArgs(argv) {
@@ -58,6 +58,41 @@ function toAbsoluteUrl(value, siteUrl) {
 	return new URL(normalizedPath, siteUrl).toString();
 }
 
+function decodeXmlEntities(value) {
+	return value
+		.replaceAll('&amp;', '&')
+		.replaceAll('&lt;', '<')
+		.replaceAll('&gt;', '>')
+		.replaceAll('&quot;', '"')
+		.replaceAll('&apos;', "'");
+}
+
+async function readSitemapUrls() {
+	let sitemap;
+
+	try {
+		sitemap = await readFile(sitemapPath, 'utf8');
+	} catch (error) {
+		if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
+			throw new Error(
+				'Generated sitemap not found. Run `npm run build` before submitting all pages.'
+			);
+		}
+
+		throw error;
+	}
+
+	const urls = [...sitemap.matchAll(/<loc>([\s\S]*?)<\/loc>/g)].map((match) =>
+		decodeXmlEntities(match[1].trim())
+	);
+
+	if (urls.length === 0) {
+		throw new Error('Generated sitemap does not contain any URLs.');
+	}
+
+	return urls;
+}
+
 async function findPublicKey() {
 	const filenames = await readdir(publicDir);
 	const candidates = [];
@@ -89,8 +124,8 @@ async function findPublicKey() {
 	throw new Error('No IndexNow key file found in public/.');
 }
 
-function getUrlList(inputUrls, siteUrl) {
-	const urls = inputUrls.length > 0 ? inputUrls : defaultPaths;
+async function getUrlList(inputUrls, siteUrl) {
+	const urls = inputUrls.length > 0 ? inputUrls : await readSitemapUrls();
 	const siteHost = new URL(siteUrl).host;
 
 	return [...new Set(urls.map((url) => toAbsoluteUrl(url, siteUrl)))].map((url) => {
@@ -133,7 +168,7 @@ async function main() {
 	const args = parseArgs(process.argv.slice(2));
 	const siteUrl = normalizeSiteUrl(args.siteUrl);
 	const key = args.key || (await findPublicKey());
-	const urls = getUrlList(args.urls, siteUrl);
+	const urls = await getUrlList(args.urls, siteUrl);
 
 	if (!keyPattern.test(key)) {
 		throw new Error('IndexNow key must be 8 to 128 letters, numbers, or hyphens.');

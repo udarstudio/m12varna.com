@@ -101,9 +101,9 @@ useHead({
 </script>
 
 <template>
-	<main class="mx-auto flex max-w-5xl flex-col gap-8 px-6 py-16 text-gray-700">
+	<main class="mx-auto flex max-w-5xl flex-col gap-12 px-6 py-16 text-gray-700">
 		<section class="flex flex-col gap-4">
-			<h1 class="text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
+			<h1 class="text-3xl font-semibold leading-tight text-black md:text-5xl">
 				Партньори и приятели
 			</h1>
 
@@ -114,11 +114,11 @@ useHead({
 			</p>
 		</section>
 
-		<section v-if="partners.length" class="grid gap-5 md:grid-cols-2">
+		<section v-if="partners.length" class="grid gap-6 md:grid-cols-2">
 			<article
 				v-for="partner in partners"
 				:key="partner.name"
-				class="flex h-full flex-col gap-5 rounded-3xl border border-gray-200 bg-white p-5 shadow-sm"
+				class="flex h-full flex-col gap-6 rounded-3xl border border-gray-200 bg-white p-4 shadow-sm"
 			>
 				<div class="flex items-center gap-4">
 					<div
@@ -133,20 +133,20 @@ useHead({
 							class="h-full w-full object-contain p-1.5"
 						/>
 
-						<span v-else class="text-lg font-semibold text-slate-400">
+						<span v-else class="text-lg font-semibold text-gray-400">
 							{{ partner.name.slice(0, 2).toUpperCase() }}
 						</span>
 					</div>
 
 					<div>
-						<h3 class="text-xl font-semibold text-slate-900">{{ partner.name }}</h3>
+						<h3 class="text-xl font-semibold text-black">{{ partner.name }}</h3>
 
 						<a
 							v-if="partner.website"
 							:href="partner.website"
 							target="_blank"
 							rel="nofollow noopener noreferrer"
-							class="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
+							class="mt-3 inline-flex w-fit items-center gap-2 rounded-full bg-black px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-700 hover:text-white"
 						>
 							Към сайта
 							<ArrowTopRightOnSquareIcon class="h-3 w-3" />

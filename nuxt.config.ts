@@ -1,6 +1,11 @@
 export default defineNuxtConfig({
 	modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
 	css: ['~/assets/css/tailwind.css'],
+	runtimeConfig: {
+		public: {
+			googleAnalyticsId: process.env.NUXT_PUBLIC_GOOGLE_ANALYTICS_ID || 'G-R26LT33H3Q',
+		},
+	},
 	site: {
 		url: process.env.NUXT_PUBLIC_SITE_URL || 'https://remonti-varna.bg',
 	},
@@ -27,13 +32,6 @@ export default defineNuxtConfig({
 			htmlAttrs: {
 				lang: 'bg',
 			},
-			script: [
-				{
-					defer: true,
-					src: 'https://cloud.umami.is/script.js',
-					'data-website-id': 'e21291f9-3954-403f-9b23-148b3ff42ed6',
-				},
-			],
 			link: [
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 				{ rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
