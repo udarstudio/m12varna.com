@@ -2,7 +2,7 @@ type GoogleTagArguments = [command: string, ...parameters: unknown[]];
 
 declare global {
 	interface Window {
-		dataLayer?: GoogleTagArguments[];
+		dataLayer?: unknown[];
 		gtag?: (...args: GoogleTagArguments) => void;
 		[key: `ga-disable-${string}`]: boolean | undefined;
 	}
